@@ -1,0 +1,328 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "事件分类数据结构",
+  "description": "定义事件分类的完整数据结构，包含图标、名称、时间、地域、群组、成员等信息",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "事件分类唯一标识符",
+      "example": "category_001"
+    },
+    "name": {
+      "type": "string",
+      "description": "事件分类名称",
+      "example": "工作会议"
+    },
+    "icon": {
+      "type": "string",
+      "description": "事件分类图标（emoji或图标代码）",
+      "example": "📋"
+    },
+    "color": {
+      "type": "string",
+      "description": "事件分类主题色（十六进制色值）",
+      "example": "#007AFF"
+    },
+    "startTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "事件分类开始时间（ISO 8601格式）",
+      "example": "2025-07-18T09:00:00Z"
+    },
+    "endTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "事件分类结束时间（ISO 8601格式）",
+      "example": "2025-07-18T17:00:00Z"
+    },
+    "region": {
+      "type": "object",
+      "description": "事件分类所属地域信息",
+      "properties": {
+        "country": {
+          "type": "string",
+          "description": "国家",
+          "example": "中国"
+        },
+        "province": {
+          "type": "string",
+          "description": "省份/州",
+          "example": "北京市"
+        },
+        "city": {
+          "type": "string",
+          "description": "城市",
+          "example": "北京"
+        },
+        "district": {
+          "type": "string",
+          "description": "区/县",
+          "example": "海淀区"
+        },
+        "address": {
+          "type": "string",
+          "description": "详细地址",
+          "example": "中关村软件园"
+        },
+        "coordinates": {
+          "type": "object",
+          "description": "地理坐标",
+          "properties": {
+            "latitude": {
+              "type": "number",
+              "description": "纬度",
+              "example": 39.9042
+            },
+            "longitude": {
+              "type": "number",
+              "description": "经度",
+              "example": 116.4074
+            }
+          },
+          "required": ["latitude", "longitude"]
+        }
+      },
+      "required": ["country", "city"]
+    },
+    "group": {
+      "type": "object",
+      "description": "事件分类所属群组信息",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "群组唯一标识符",
+          "example": "group_001"
+        },
+        "name": {
+          "type": "string",
+          "description": "群组名称",
+          "example": "开发团队"
+        },
+        "type": {
+          "type": "string",
+          "description": "群组类型",
+          "enum": ["department", "project", "team", "organization", "personal", "public"],
+          "example": "team"
+        },
+        "permissions": {
+          "type": "object",
+          "description": "群组权限设置",
+          "properties": {
+            "canView": {
+              "type": "boolean",
+              "description": "是否可以查看",
+              "example": true
+            },
+            "canEdit": {
+              "type": "boolean",
+              "description": "是否可以编辑",
+              "example": false
+            },
+            "canDelete": {
+              "type": "boolean",
+              "description": "是否可以删除",
+              "example": false
+            },
+            "canInvite": {
+              "type": "boolean",
+              "description": "是否可以邀请成员",
+              "example": false
+            }
+          },
+          "required": ["canView", "canEdit", "canDelete", "canInvite"]
+        }
+      },
+      "required": ["id", "name", "type", "permissions"]
+    },
+    "members": {
+      "type": "array",
+      "description": "事件分类包含的成员列表",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "成员唯一标识符",
+            "example": "user_001"
+          },
+          "name": {
+            "type": "string",
+            "description": "成员姓名",
+            "example": "张三"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "description": "成员邮箱",
+            "example": "zhangsan@example.com"
+          },
+          "phone": {
+            "type": "string",
+            "description": "成员电话",
+            "example": "+86-138-0000-0000"
+          },
+          "avatar": {
+            "type": "string",
+            "description": "成员头像URL",
+            "example": "https://example.com/avatar/user_001.jpg"
+          },
+          "role": {
+            "type": "string",
+            "description": "成员在分类中的角色",
+            "enum": ["owner", "admin", "member", "viewer"],
+            "example": "member"
+          },
+          "status": {
+            "type": "string",
+            "description": "成员状态",
+            "enum": ["active", "inactive", "pending", "blocked"],
+            "example": "active"
+          },
+          "joinDate": {
+            "type": "string",
+            "format": "date-time",
+            "description": "加入日期",
+            "example": "2025-07-18T10:00:00Z"
+          },
+          "permissions": {
+            "type": "object",
+            "description": "成员权限设置",
+            "properties": {
+              "canCreateEvent": {
+                "type": "boolean",
+                "description": "是否可以创建事件",
+                "example": true
+              },
+              "canEditEvent": {
+                "type": "boolean",
+                "description": "是否可以编辑事件",
+                "example": false
+              },
+              "canDeleteEvent": {
+                "type": "boolean",
+                "description": "是否可以删除事件",
+                "example": false
+              },
+              "canInviteMembers": {
+                "type": "boolean",
+                "description": "是否可以邀请成员",
+                "example": false
+              }
+            },
+            "required": ["canCreateEvent", "canEditEvent", "canDeleteEvent", "canInviteMembers"]
+          }
+        },
+        "required": ["id", "name", "role", "status", "joinDate", "permissions"]
+      }
+    },
+    "settings": {
+      "type": "object",
+      "description": "事件分类设置",
+      "properties": {
+        "isActive": {
+          "type": "boolean",
+          "description": "是否启用",
+          "example": true
+        },
+        "isPublic": {
+          "type": "boolean",
+          "description": "是否公开",
+          "example": false
+        },
+        "allowJoin": {
+          "type": "boolean",
+          "description": "是否允许申请加入",
+          "example": true
+        },
+        "requireApproval": {
+          "type": "boolean",
+          "description": "是否需要审批",
+          "example": true
+        },
+        "maxMembers": {
+          "type": "integer",
+          "description": "最大成员数量（-1表示无限制）",
+          "example": 50
+        },
+        "defaultEventDuration": {
+          "type": "integer",
+          "description": "默认事件持续时间（分钟）",
+          "example": 60
+        },
+        "reminderSettings": {
+          "type": "object",
+          "description": "提醒设置",
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "description": "是否启用提醒",
+              "example": true
+            },
+            "advanceTime": {
+              "type": "integer",
+              "description": "提前提醒时间（分钟）",
+              "example": 15
+            },
+            "reminderType": {
+              "type": "string",
+              "description": "提醒类型",
+              "enum": ["notification", "email", "sms", "all"],
+              "example": "notification"
+            }
+          },
+          "required": ["enabled", "advanceTime", "reminderType"]
+        }
+      },
+      "required": ["isActive", "isPublic", "allowJoin", "requireApproval", "maxMembers", "defaultEventDuration", "reminderSettings"]
+    },
+    "metadata": {
+      "type": "object",
+      "description": "元数据信息",
+      "properties": {
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "创建时间",
+          "example": "2025-07-18T10:00:00Z"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "最后更新时间",
+          "example": "2025-07-18T10:00:00Z"
+        },
+        "createdBy": {
+          "type": "string",
+          "description": "创建者ID",
+          "example": "user_001"
+        },
+        "updatedBy": {
+          "type": "string",
+          "description": "最后更新者ID",
+          "example": "user_001"
+        },
+        "version": {
+          "type": "string",
+          "description": "数据版本号",
+          "example": "1.0.0"
+        },
+        "tags": {
+          "type": "array",
+          "description": "标签列表",
+          "items": {
+            "type": "string"
+          },
+          "example": ["工作", "重要", "定期"]
+        },
+        "description": {
+          "type": "string",
+          "description": "分类描述",
+          "example": "用于管理工作相关的会议和任务"
+        }
+      },
+      "required": ["createdAt", "updatedAt", "createdBy", "updatedBy", "version"]
+    }
+  },
+  "required": ["id", "name", "icon", "color", "startTime", "endTime", "region", "group", "members", "settings", "metadata"]
+}

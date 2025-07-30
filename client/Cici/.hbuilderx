@@ -1,0 +1,32 @@
+{
+  "name": "CICI",
+  "short_name": "CICI",
+  "description": "CICI综合社交活动平台",
+  "version": "1.0.0",
+  "uni-app": {
+    "compilerVersion": "3.8.12",
+    "router": {
+      "mode": "hash"
+    },
+    "optimization": {
+      "subPackages": true,
+      "treeShaking": {
+        "enable": true
+      }
+    },
+    "runmode": "liberate",
+    "h5": {
+      "devServer": {
+        "port": 5173,
+        "open": true,
+        "https": false
+      },
+      "publicPath": "/",
+      "template": "index.html"
+    }
+  },
+  "dependencies": {
+    "vue": "^3.3.4",
+    "pinia": "^2.1.6"
+  }
+}

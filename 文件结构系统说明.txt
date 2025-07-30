@@ -1,0 +1,9 @@
+C2/
+├── README.md                    # 项目说明
+├── FINAL_STARTUP_GUIDE.md       # 启动指南  
+├── LOCAL_DATABASE_GUIDE.md      # 数据库指南
+├── PROJECT_STATUS.md            # 项目状态
+├── client/Cici/                 # 前端uni-app应用
+├── server/                      # 后端Node.js服务
+├── share/                       # 共享数据结构
+└── shared/                      # 共享配置

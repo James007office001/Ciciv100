@@ -1,0 +1,462 @@
+{
+  "videoPostExamples": {
+    "shortVideo": {
+      "id": "video_001",
+      "title": "城市夜景延时摄影",
+      "description": "用延时摄影记录城市的夜晚，车流如河，灯火璀璨。霓虹灯下的都市生活，每一帧都是一个故事。这个视频拍摄于上海外滩，历时3小时完成，展现了城市的魅力和活力。",
+      "videos": [
+        {
+          "url": "https://example.com/videos/city_night_timelapse.mp4",
+          "thumbnail": "https://example.com/thumbnails/city_night_thumb.jpg",
+          "duration": 90,
+          "width": 1920,
+          "height": 1080,
+          "size": 52428800,
+          "format": "mp4",
+          "quality": "1080p"
+        }
+      ],
+      "coverImage": "https://example.com/covers/city_night_cover.jpg",
+      "tags": ["延时摄影", "城市夜景", "上海外滩", "摄影技巧"],
+      "location": "上海外滩",
+      "createTime": "2024-07-15T20:30:00Z",
+      "viewCount": 15420,
+      "likeCount": 1256,
+      "commentCount": 89,
+      "collectCount": 234,
+      "shareCount": 156,
+      "isLiked": false,
+      "isCollected": false,
+      "isJoined": false,
+      "videoType": "short",
+      "playbackSettings": {
+        "autoPlay": true,
+        "loop": true,
+        "muted": false,
+        "showControls": true
+      },
+      "author": {
+        "id": "author_video_001",
+        "name": "城市摄影师",
+        "avatar": "https://example.com/avatars/photographer.jpg",
+        "isFollowed": false,
+        "verified": true,
+        "level": 5,
+        "fansCount": 52340,
+        "followsCount": 1234,
+        "videosCount": 89,
+        "bio": "专业摄影师，专注城市风光和延时摄影",
+        "badges": [
+          {
+            "type": "verification",
+            "name": "认证摄影师",
+            "icon": "https://example.com/badges/verified.png"
+          },
+          {
+            "type": "achievement",
+            "name": "百万播放",
+            "icon": "https://example.com/badges/million_views.png"
+          }
+        ]
+      },
+      "event": null,
+      "ticket": null,
+      "interactionData": {
+        "playProgress": 0.75,
+        "lastPlayTime": "2024-07-16T10:30:00Z",
+        "playCount": 3,
+        "completionRate": 0.85,
+        "engagementScore": 8.5,
+        "hotComments": [
+          {
+            "id": "comment_001",
+            "content": "太美了！这个视角真的震撼",
+            "author": "摄影爱好者",
+            "likeCount": 45,
+            "timestamp": 30
+          },
+          {
+            "id": "comment_002",
+            "content": "请问用的什么设备拍摄的？",
+            "author": "新手摄影师",
+            "likeCount": 23,
+            "timestamp": 60
+          }
+        ]
+      },
+      "technicalInfo": {
+        "encoding": "H.264",
+        "bitrate": 5000,
+        "frameRate": 30,
+        "aspectRatio": "16:9",
+        "audioInfo": {
+          "codec": "AAC",
+          "sampleRate": 44100,
+          "channels": 2
+        },
+        "subtitles": [
+          {
+            "language": "zh-CN",
+            "url": "https://example.com/subtitles/city_night_zh.srt",
+            "format": "srt"
+          },
+          {
+            "language": "en",
+            "url": "https://example.com/subtitles/city_night_en.srt",
+            "format": "srt"
+          }
+        ]
+      },
+      "moderationInfo": {
+        "status": "approved",
+        "reviewedAt": "2024-07-15T21:00:00Z",
+        "reviewedBy": "moderator_001",
+        "contentRating": "G",
+        "flags": []
+      },
+      "analytics": {
+        "impressions": 45320,
+        "clickThroughRate": 0.34,
+        "averageWatchTime": 76.5,
+        "retentionRate": 0.85,
+        "bounceRate": 0.15,
+        "demographics": {
+          "ageGroups": {
+            "18-24": 0.25,
+            "25-34": 0.45,
+            "35-44": 0.20,
+            "45+": 0.10
+          },
+          "genderRatio": {
+            "male": 0.65,
+            "female": 0.35
+          }
+        }
+      }
+    },
+    "eventVideo": {
+      "id": "video_002",
+      "title": "音乐节现场精彩回顾",
+      "description": "2024夏日音乐节现场录制，汇聚了多位知名音乐人的精彩表演。感受现场的热烈氛围，重温那些美好的音乐时光。",
+      "videos": [
+        {
+          "url": "https://example.com/videos/music_festival_highlights.mp4",
+          "thumbnail": "https://example.com/thumbnails/music_festival_thumb.jpg",
+          "duration": 300,
+          "width": 1920,
+          "height": 1080,
+          "size": 157286400,
+          "format": "mp4",
+          "quality": "1080p"
+        }
+      ],
+      "coverImage": "https://example.com/covers/music_festival_cover.jpg",
+      "tags": ["音乐节", "现场录制", "音乐", "演出"],
+      "location": "上海世博公园",
+      "createTime": "2024-07-16T19:00:00Z",
+      "viewCount": 28450,
+      "likeCount": 2134,
+      "commentCount": 156,
+      "collectCount": 456,
+      "shareCount": 289,
+      "isLiked": true,
+      "isCollected": true,
+      "isJoined": false,
+      "videoType": "long",
+      "playbackSettings": {
+        "autoPlay": false,
+        "loop": false,
+        "muted": false,
+        "showControls": true
+      },
+      "author": {
+        "id": "author_video_002",
+        "name": "音乐现场",
+        "avatar": "https://example.com/avatars/music_venue.jpg",
+        "isFollowed": true,
+        "verified": true,
+        "level": 8,
+        "fansCount": 125600,
+        "followsCount": 567,
+        "videosCount": 234,
+        "bio": "专业音乐现场录制，分享最好的音乐体验",
+        "badges": [
+          {
+            "type": "verification",
+            "name": "官方认证",
+            "icon": "https://example.com/badges/official.png"
+          },
+          {
+            "type": "category",
+            "name": "音乐达人",
+            "icon": "https://example.com/badges/music_expert.png"
+          }
+        ]
+      },
+      "event": {
+        "id": "event_music_festival_2024",
+        "title": "2024夏日音乐节",
+        "description": "汇聚国内外顶尖音乐人的夏日音乐盛宴，三天两夜的音乐狂欢，多个舞台同时进行，满足不同音乐品味的观众需求。",
+        "startTime": "2024-07-20T18:00:00Z",
+        "endTime": "2024-07-22T23:00:00Z",
+        "location": "上海世博公园",
+        "category": "音乐节",
+        "status": "upcoming",
+        "capacity": 50000,
+        "attendeesCount": 32540,
+        "price": 380,
+        "organizer": {
+          "id": "organizer_music_001",
+          "name": "音乐节组委会",
+          "contact": "contact@musicfestival.com"
+        },
+        "requirements": [
+          "年满16周岁",
+          "身体健康",
+          "禁止携带危险品"
+        ],
+        "highlights": [
+          "30+知名音乐人",
+          "5个不同风格舞台",
+          "美食市集",
+          "互动体验区"
+        ]
+      },
+      "ticket": {
+        "id": "ticket_music_festival_001",
+        "type": "electronic",
+        "price": 380,
+        "originalPrice": 450,
+        "currency": "CNY",
+        "status": "available",
+        "validFrom": "2024-07-20T16:00:00Z",
+        "validUntil": "2024-07-22T23:59:59Z",
+        "qrCode": "https://example.com/qrcodes/ticket_music_001.png",
+        "serialNumber": "MF2024072001234567",
+        "seatInfo": null,
+        "benefits": [
+          "三天通票",
+          "所有舞台观看权",
+          "专属纪念品",
+          "优先入场"
+        ],
+        "refundPolicy": {
+          "refundable": true,
+          "refundDeadline": "2024-07-18T23:59:59Z",
+          "refundFee": 38
+        }
+      },
+      "interactionData": {
+        "playProgress": 0.45,
+        "lastPlayTime": "2024-07-17T14:20:00Z",
+        "playCount": 2,
+        "completionRate": 0.65,
+        "engagementScore": 9.2,
+        "hotComments": [
+          {
+            "id": "comment_003",
+            "content": "去年就想去但是没买到票，今年一定要参加！",
+            "author": "音乐迷",
+            "likeCount": 78,
+            "timestamp": 120
+          },
+          {
+            "id": "comment_004",
+            "content": "这个阵容太强了，期待现场",
+            "author": "摇滚青年",
+            "likeCount": 65,
+            "timestamp": 180
+          }
+        ]
+      },
+      "technicalInfo": {
+        "encoding": "H.264",
+        "bitrate": 8000,
+        "frameRate": 30,
+        "aspectRatio": "16:9",
+        "audioInfo": {
+          "codec": "AAC",
+          "sampleRate": 48000,
+          "channels": 2
+        },
+        "subtitles": [
+          {
+            "language": "zh-CN",
+            "url": "https://example.com/subtitles/music_festival_zh.srt",
+            "format": "srt"
+          }
+        ]
+      },
+      "moderationInfo": {
+        "status": "approved",
+        "reviewedAt": "2024-07-16T20:00:00Z",
+        "reviewedBy": "moderator_002",
+        "contentRating": "G",
+        "flags": []
+      },
+      "analytics": {
+        "impressions": 89340,
+        "clickThroughRate": 0.32,
+        "averageWatchTime": 195.6,
+        "retentionRate": 0.65,
+        "bounceRate": 0.35,
+        "demographics": {
+          "ageGroups": {
+            "18-24": 0.40,
+            "25-34": 0.35,
+            "35-44": 0.20,
+            "45+": 0.05
+          },
+          "genderRatio": {
+            "male": 0.52,
+            "female": 0.48
+          }
+        }
+      }
+    },
+    "liveStream": {
+      "id": "video_003",
+      "title": "美食制作直播",
+      "description": "直播制作经典川菜麻婆豆腐，从选材到成品，全程直播教学。欢迎大家互动交流，分享你们的制作心得。",
+      "videos": [
+        {
+          "url": "https://example.com/live/cooking_live_stream.m3u8",
+          "thumbnail": "https://example.com/thumbnails/cooking_live_thumb.jpg",
+          "duration": 0,
+          "width": 1280,
+          "height": 720,
+          "size": 0,
+          "format": "m3u8",
+          "quality": "720p"
+        }
+      ],
+      "coverImage": "https://example.com/covers/cooking_live_cover.jpg",
+      "tags": ["直播", "美食", "川菜", "教学"],
+      "location": "家庭厨房",
+      "createTime": "2024-07-17T19:30:00Z",
+      "viewCount": 3450,
+      "likeCount": 234,
+      "commentCount": 89,
+      "collectCount": 67,
+      "shareCount": 45,
+      "isLiked": false,
+      "isCollected": false,
+      "isJoined": false,
+      "videoType": "live",
+      "playbackSettings": {
+        "autoPlay": true,
+        "loop": false,
+        "muted": false,
+        "showControls": false
+      },
+      "author": {
+        "id": "author_video_003",
+        "name": "美食小厨",
+        "avatar": "https://example.com/avatars/chef.jpg",
+        "isFollowed": false,
+        "verified": false,
+        "level": 3,
+        "fansCount": 8450,
+        "followsCount": 234,
+        "videosCount": 156,
+        "bio": "热爱美食，分享家常菜制作技巧",
+        "badges": [
+          {
+            "type": "category",
+            "name": "美食达人",
+            "icon": "https://example.com/badges/food_expert.png"
+          }
+        ]
+      },
+      "event": {
+        "id": "event_cooking_class_001",
+        "title": "在线烹饪课程",
+        "description": "每周三晚上的在线烹饪课程，教授经典川菜制作技巧。",
+        "startTime": "2024-07-17T19:30:00Z",
+        "endTime": "2024-07-17T21:00:00Z",
+        "location": "在线直播",
+        "category": "教育",
+        "status": "ongoing",
+        "capacity": 500,
+        "attendeesCount": 267,
+        "price": 0,
+        "organizer": {
+          "id": "organizer_cooking_001",
+          "name": "美食教育平台",
+          "contact": "learn@foodplatform.com"
+        },
+        "requirements": [
+          "准备相关食材",
+          "具备基本厨具"
+        ],
+        "highlights": [
+          "专业chef指导",
+          "实时互动答疑",
+          "免费参与"
+        ]
+      },
+      "ticket": null,
+      "interactionData": {
+        "playProgress": 1.0,
+        "lastPlayTime": "2024-07-17T20:15:00Z",
+        "playCount": 1,
+        "completionRate": 1.0,
+        "engagementScore": 7.8,
+        "hotComments": [
+          {
+            "id": "comment_005",
+            "content": "豆腐要选用嫩豆腐吗？",
+            "author": "新手煮夫",
+            "likeCount": 12,
+            "timestamp": 0
+          },
+          {
+            "id": "comment_006",
+            "content": "老师的刀工真的很厉害",
+            "author": "美食爱好者",
+            "likeCount": 18,
+            "timestamp": 0
+          }
+        ]
+      },
+      "technicalInfo": {
+        "encoding": "H.264",
+        "bitrate": 3000,
+        "frameRate": 25,
+        "aspectRatio": "16:9",
+        "audioInfo": {
+          "codec": "AAC",
+          "sampleRate": 44100,
+          "channels": 2
+        },
+        "subtitles": []
+      },
+      "moderationInfo": {
+        "status": "approved",
+        "reviewedAt": "2024-07-17T19:25:00Z",
+        "reviewedBy": "moderator_003",
+        "contentRating": "G",
+        "flags": []
+      },
+      "analytics": {
+        "impressions": 12450,
+        "clickThroughRate": 0.28,
+        "averageWatchTime": 0,
+        "retentionRate": 0.78,
+        "bounceRate": 0.22,
+        "demographics": {
+          "ageGroups": {
+            "18-24": 0.15,
+            "25-34": 0.45,
+            "35-44": 0.30,
+            "45+": 0.10
+          },
+          "genderRatio": {
+            "male": 0.35,
+            "female": 0.65
+          }
+        }
+      }
+    }
+  }
+}

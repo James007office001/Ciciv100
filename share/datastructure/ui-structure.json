@@ -1,0 +1,147 @@
+{
+  "uiComponents": {
+    "navbar": {
+      "position": "fixed",
+      "structure": {
+        "leftButton": {
+          "type": "nav-btn",
+          "action": "goBack",
+          "icon": "<",
+          "style": "glass-morphism"
+        },
+        "title": {
+          "type": "text",
+          "content": "{{ isEditMode ? '编辑事件' : '新建事件' }}",
+          "style": "white-text"
+        },
+        "rightActions": {
+          "type": "nav-actions",
+          "buttons": [
+            {
+              "type": "nav-btn",
+              "action": "showTicketModal",
+              "icon": "🎫",
+              "style": "glass-morphism"
+            },
+            {
+              "type": "nav-btn",
+              "action": "saveEvent",
+              "icon": "✓",
+              "style": "glass-morphism"
+            }
+          ]
+        }
+      }
+    },
+    "formItems": {
+      "inline": {
+        "structure": "horizontal",
+        "components": [
+          {
+            "type": "label",
+            "width": "100rpx",
+            "style": "white-text"
+          },
+          {
+            "type": "input|picker",
+            "flex": 1,
+            "style": "glass-input"
+          }
+        ]
+      },
+      "vertical": {
+        "structure": "vertical",
+        "components": [
+          {
+            "type": "label",
+            "style": "white-text-block"
+          },
+          {
+            "type": "content",
+            "style": "full-width"
+          }
+        ]
+      }
+    },
+    "modals": {
+      "ticket": {
+        "overlay": "blur-background",
+        "modal": "glass-morphism-modal",
+        "sections": [
+          {
+            "type": "header",
+            "components": ["title", "close-button"]
+          },
+          {
+            "type": "content",
+            "components": ["event-info", "ticket-form"]
+          },
+          {
+            "type": "actions",
+            "components": ["cancel-button", "confirm-button"]
+          }
+        ]
+      },
+      "delete": {
+        "overlay": "blur-background",
+        "modal": "glass-morphism-modal",
+        "sections": [
+          {
+            "type": "header",
+            "components": ["title"]
+          },
+          {
+            "type": "content",
+            "components": ["warning-text"]
+          },
+          {
+            "type": "actions",
+            "components": ["cancel-button", "delete-button"]
+          }
+        ]
+      }
+    }
+  },
+  "styleTheme": {
+    "glassMorphism": {
+      "background": "rgba(255, 255, 255, 0.15)",
+      "backdropFilter": "blur(10px)",
+      "border": "1px solid rgba(255, 255, 255, 0.2)",
+      "borderRadius": "16rpx"
+    },
+    "colors": {
+      "primary": "#667eea",
+      "secondary": "#764ba2",
+      "success": "#34C759",
+      "warning": "#FF9500",
+      "danger": "#FF3B30",
+      "info": "#007AFF",
+      "white": "#ffffff",
+      "whiteTransparent": "rgba(255, 255, 255, 0.8)"
+    },
+    "gradients": {
+      "main": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+      "overlay": "rgba(0, 0, 0, 0.5)"
+    }
+  },
+  "responsiveBreakpoints": {
+    "small": "max-width: 480rpx",
+    "medium": "min-width: 480rpx and max-width: 768rpx",
+    "large": "min-width: 768rpx"
+  },
+  "animationEffects": {
+    "buttonPress": {
+      "transform": "scale(0.95)",
+      "transition": "all 0.3s ease"
+    },
+    "modalShow": {
+      "opacity": "0 to 1",
+      "transform": "scale(0.9) to scale(1)",
+      "transition": "all 0.3s ease"
+    },
+    "glassMorphism": {
+      "backdropFilter": "blur(10px)",
+      "transition": "all 0.3s ease"
+    }
+  }
+}

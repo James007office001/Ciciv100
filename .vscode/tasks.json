@@ -1,0 +1,88 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "CICI - 运行到微信小程序",
+			"type": "shell",
+			"command": "echo",
+			"args": [
+				"请在 HBuilderX 中打开 client/Cici 目录，然后运行到微信小程序模拟器"
+			],
+			"group": "build",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "启动CICI后端服务",
+			"type": "shell",
+			"command": "node",
+			"args": ["src/app.js"],
+			"group": "build",
+			"isBackground": true,
+			"options": {
+				"cwd": "${workspaceFolder}/server"
+			},
+			"problemMatcher": []
+		},
+		{
+			"label": "启动简化CICI服务器",
+			"type": "shell",
+			"command": "node",
+			"args": ["simple-server.js"],
+			"group": "build", 
+			"isBackground": true,
+			"options": {
+				"cwd": "${workspaceFolder}/server"
+			},
+			"problemMatcher": []
+		},
+		{
+			"label": "快速启动CICI所有服务",
+			"type": "shell",
+			"command": "node",
+			"args": ["quick-start.js"],
+			"group": "build",
+			"isBackground": true,
+			"options": {
+				"cwd": "${workspaceFolder}/server"
+			},
+			"problemMatcher": []
+		},
+		{
+			"label": "启动修复版CICI服务器",
+			"type": "shell",
+			"command": "node",
+			"args": ["fixed-server.js"],
+			"group": "build",
+			"isBackground": true,
+			"options": {
+				"cwd": "${workspaceFolder}/server"
+			},
+			"problemMatcher": []
+		},
+		{
+			"label": "核心架构依赖测试",
+			"type": "shell",
+			"command": "node",
+			"args": ["architecture-test.js"],
+			"group": "build",
+			"isBackground": true,
+			"options": {
+				"cwd": "${workspaceFolder}/server"
+			},
+			"problemMatcher": []
+		},
+		{
+			"label": "启动CICI前端开发服务器",
+			"type": "shell",
+			"command": "npm",
+			"args": ["run", "dev:h5"],
+			"group": "build",
+			"isBackground": true,
+			"options": {
+				"cwd": "${workspaceFolder}/client/Cici"
+			},
+			"problemMatcher": []
+		}
+	]
+}

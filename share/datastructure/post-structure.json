@@ -1,0 +1,67 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CICI 图文帖子数据结构",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "description": "帖子唯一ID" },
+    "title": { "type": "string", "description": "帖子标题" },
+    "description": { "type": "string", "description": "帖子正文内容" },
+    "images": {
+      "type": "array",
+      "items": { "type": "string", "description": "图片URL" },
+      "description": "帖子图片列表"
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "标签列表"
+    },
+    "location": { "type": "string", "description": "地理位置" },
+    "createTime": { "type": "string", "format": "date-time", "description": "发布时间" },
+    "viewCount": { "type": "integer", "description": "浏览量" },
+    "likeCount": { "type": "integer", "description": "点赞数" },
+    "commentCount": { "type": "integer", "description": "评论数" },
+    "collectCount": { "type": "integer", "description": "收藏数" },
+    "isLiked": { "type": "boolean", "description": "当前用户是否点赞" },
+    "isCollected": { "type": "boolean", "description": "当前用户是否收藏" },
+    "isJoined": { "type": "boolean", "description": "当前用户是否参加活动" },
+    "author": {
+      "type": "object",
+      "description": "博主信息",
+      "properties": {
+        "id": { "type": "string", "description": "博主ID" },
+        "name": { "type": "string", "description": "博主昵称" },
+        "avatar": { "type": "string", "description": "博主头像URL" },
+        "isFollowed": { "type": "boolean", "description": "当前用户是否关注该博主" }
+      },
+      "required": ["id", "name", "avatar"]
+    },
+    "event": {
+      "type": "object",
+      "description": "关联的事件信息（如为活动帖）",
+      "properties": {
+        "id": { "type": "string", "description": "事件ID" },
+        "title": { "type": "string", "description": "事件标题" },
+        "startTime": { "type": "string", "format": "date-time", "description": "开始时间" },
+        "endTime": { "type": "string", "format": "date-time", "description": "结束时间" },
+        "location": { "type": "string", "description": "事件地点" },
+        "category": { "type": "string", "description": "事件分类" },
+        "status": { "type": "string", "description": "事件状态（如报名中/已结束）" }
+      },
+      "required": ["id", "title"]
+    },
+    "ticket": {
+      "type": "object",
+      "description": "门票信息（如为活动帖）",
+      "properties": {
+        "id": { "type": "string", "description": "门票ID" },
+        "type": { "type": "string", "description": "门票类型（如电子票/纸质票）" },
+        "price": { "type": "number", "description": "门票价格" },
+        "status": { "type": "string", "description": "门票状态（如未领取/已领取/已核销）" },
+        "qrCode": { "type": "string", "description": "门票二维码图片URL" }
+      },
+      "required": ["id", "type", "price"]
+    }
+  },
+  "required": ["id", "title", "description", "images", "author"]
+}

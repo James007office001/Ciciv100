@@ -1,0 +1,672 @@
+{
+  "userProfileSchema": {
+    "basicInfo": {
+      "id": {
+        "type": "number",
+        "description": "用户唯一标识",
+        "example": 1001,
+        "required": true
+      },
+      "username": {
+        "type": "string",
+        "description": "用户名（登录用）",
+        "example": "user123",
+        "minLength": 3,
+        "maxLength": 20,
+        "required": true
+      },
+      "displayName": {
+        "type": "string",
+        "description": "显示名称",
+        "example": "张小明",
+        "maxLength": 50,
+        "required": true
+      },
+      "phone": {
+        "type": "string",
+        "description": "手机号",
+        "example": "13800138000",
+        "pattern": "^1[3-9]\\d{9}$",
+        "required": true
+      },
+      "email": {
+        "type": "string",
+        "description": "邮箱地址",
+        "example": "user@example.com",
+        "required": false
+      },
+      "avatar": {
+        "type": "string",
+        "description": "头像URL",
+        "example": "/static/avatars/user_1001.jpg",
+        "required": false
+      },
+      "bio": {
+        "type": "string",
+        "description": "个人简介",
+        "example": "热爱生活，享受每一个美好瞬间 ✨",
+        "maxLength": 200,
+        "required": false
+      },
+      "gender": {
+        "type": "string",
+        "description": "性别",
+        "enum": ["male", "female", "other", "prefer_not_to_say"],
+        "example": "male",
+        "required": false
+      },
+      "birthday": {
+        "type": "string",
+        "description": "生日",
+        "format": "date",
+        "example": "1995-06-15",
+        "required": false
+      },
+      "location": {
+        "type": "object",
+        "description": "位置信息",
+        "properties": {
+          "country": {
+            "type": "string",
+            "example": "中国"
+          },
+          "province": {
+            "type": "string",
+            "example": "广东省"
+          },
+          "city": {
+            "type": "string",
+            "example": "深圳市"
+          },
+          "district": {
+            "type": "string",
+            "example": "南山区"
+          }
+        },
+        "required": false
+      }
+    },
+    "accountInfo": {
+      "level": {
+        "type": "number",
+        "description": "用户等级",
+        "example": 5,
+        "minimum": 1,
+        "maximum": 100,
+        "default": 1
+      },
+      "experience": {
+        "type": "number",
+        "description": "当前经验值",
+        "example": 2580,
+        "minimum": 0,
+        "default": 0
+      },
+      "nextLevelExp": {
+        "type": "number",
+        "description": "升级所需经验值",
+        "example": 3000,
+        "minimum": 0
+      },
+      "balance": {
+        "type": "number",
+        "description": "账户余额",
+        "example": 1258.50,
+        "minimum": 0,
+        "default": 0
+      },
+      "points": {
+        "type": "number",
+        "description": "积分",
+        "example": 5680,
+        "minimum": 0,
+        "default": 0
+      },
+      "verificationStatus": {
+        "type": "string",
+        "description": "认证状态",
+        "enum": ["verified", "unverified", "pending", "rejected"],
+        "example": "verified",
+        "default": "unverified"
+      },
+      "membershipType": {
+        "type": "string",
+        "description": "会员类型",
+        "enum": ["basic", "premium", "vip"],
+        "example": "premium",
+        "default": "basic"
+      },
+      "membershipExpireTime": {
+        "type": "string",
+        "description": "会员到期时间",
+        "format": "datetime",
+        "example": "2024-12-31T23:59:59Z",
+        "required": false
+      }
+    },
+    "socialStats": {
+      "friendsCount": {
+        "type": "number",
+        "description": "好友数量",
+        "example": 64,
+        "minimum": 0,
+        "default": 0
+      },
+      "followsCount": {
+        "type": "number",
+        "description": "关注数量",
+        "example": 128,
+        "minimum": 0,
+        "default": 0
+      },
+      "followersCount": {
+        "type": "number",
+        "description": "粉丝数量",
+        "example": 256,
+        "minimum": 0,
+        "default": 0
+      },
+      "circlesCount": {
+        "type": "number",
+        "description": "加入的圈子数量",
+        "example": 32,
+        "minimum": 0,
+        "default": 0
+      },
+      "postsCount": {
+        "type": "number",
+        "description": "发布的动态数量",
+        "example": 156,
+        "minimum": 0,
+        "default": 0
+      },
+      "likesCount": {
+        "type": "number",
+        "description": "获得的点赞数量",
+        "example": 1024,
+        "minimum": 0,
+        "default": 0
+      },
+      "collectionsCount": {
+        "type": "number",
+        "description": "收藏数量",
+        "example": 89,
+        "minimum": 0,
+        "default": 0
+      }
+    },
+    "privacySettings": {
+      "profileVisibility": {
+        "type": "string",
+        "description": "个人资料可见性",
+        "enum": ["public", "friends", "private"],
+        "default": "public"
+      },
+      "contactVisibility": {
+        "type": "string",
+        "description": "联系方式可见性",
+        "enum": ["public", "friends", "private"],
+        "default": "friends"
+      },
+      "allowFriendRequests": {
+        "type": "boolean",
+        "description": "是否允许添加好友",
+        "default": true
+      },
+      "allowMessages": {
+        "type": "string",
+        "description": "消息接收权限",
+        "enum": ["everyone", "friends", "none"],
+        "default": "friends"
+      },
+      "showOnlineStatus": {
+        "type": "boolean",
+        "description": "是否显示在线状态",
+        "default": true
+      },
+      "allowLocationSharing": {
+        "type": "boolean",
+        "description": "是否允许位置分享",
+        "default": false
+      }
+    },
+    "notificationSettings": {
+      "pushEnabled": {
+        "type": "boolean",
+        "description": "是否开启推送通知",
+        "default": true
+      },
+      "soundEnabled": {
+        "type": "boolean",
+        "description": "是否开启声音提醒",
+        "default": true
+      },
+      "vibrationEnabled": {
+        "type": "boolean",
+        "description": "是否开启震动提醒",
+        "default": true
+      },
+      "messageNotification": {
+        "type": "boolean",
+        "description": "消息通知",
+        "default": true
+      },
+      "friendRequestNotification": {
+        "type": "boolean",
+        "description": "好友请求通知",
+        "default": true
+      },
+      "circleActivityNotification": {
+        "type": "boolean",
+        "description": "圈子活动通知",
+        "default": true
+      },
+      "systemNotification": {
+        "type": "boolean",
+        "description": "系统通知",
+        "default": true
+      },
+      "marketingNotification": {
+        "type": "boolean",
+        "description": "营销推广通知",
+        "default": false
+      },
+      "quietHours": {
+        "type": "object",
+        "description": "免打扰时间段",
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "default": false
+          },
+          "startTime": {
+            "type": "string",
+            "format": "time",
+            "example": "22:00",
+            "default": "22:00"
+          },
+          "endTime": {
+            "type": "string",
+            "format": "time",
+            "example": "08:00",
+            "default": "08:00"
+          }
+        }
+      }
+    },
+    "displaySettings": {
+      "theme": {
+        "type": "string",
+        "description": "主题设置",
+        "enum": ["default", "purple", "blue", "green", "dark"],
+        "default": "default"
+      },
+      "darkMode": {
+        "type": "boolean",
+        "description": "深色模式",
+        "default": false
+      },
+      "fontSize": {
+        "type": "string",
+        "description": "字体大小",
+        "enum": ["small", "medium", "large"],
+        "default": "medium"
+      },
+      "language": {
+        "type": "string",
+        "description": "语言设置",
+        "enum": ["zh-CN", "zh-TW", "en-US", "ja-JP", "ko-KR"],
+        "default": "zh-CN"
+      },
+      "autoPlayVideo": {
+        "type": "boolean",
+        "description": "自动播放视频",
+        "default": true
+      },
+      "showAnimations": {
+        "type": "boolean",
+        "description": "显示动画效果",
+        "default": true
+      },
+      "reducedMotion": {
+        "type": "boolean",
+        "description": "减少动画效果",
+        "default": false
+      }
+    },
+    "functionalSettings": {
+      "autoUpdate": {
+        "type": "boolean",
+        "description": "自动更新",
+        "default": true
+      },
+      "dataUsage": {
+        "type": "string",
+        "description": "数据使用偏好",
+        "enum": ["wifi_only", "low_data", "normal"],
+        "default": "normal"
+      },
+      "cacheSize": {
+        "type": "number",
+        "description": "缓存大小限制(MB)",
+        "example": 500,
+        "minimum": 100,
+        "maximum": 2048,
+        "default": 500
+      },
+      "autoSaveContent": {
+        "type": "boolean",
+        "description": "自动保存内容",
+        "default": true
+      },
+      "enableGestures": {
+        "type": "boolean",
+        "description": "启用手势操作",
+        "default": true
+      },
+      "hapticFeedback": {
+        "type": "boolean",
+        "description": "触觉反馈",
+        "default": true
+      }
+    },
+    "securitySettings": {
+      "twoFactorAuth": {
+        "type": "boolean",
+        "description": "双因子认证",
+        "default": false
+      },
+      "biometricAuth": {
+        "type": "boolean",
+        "description": "生物识别认证",
+        "default": false
+      },
+      "loginNotification": {
+        "type": "boolean",
+        "description": "登录通知",
+        "default": true
+      },
+      "sessionTimeout": {
+        "type": "number",
+        "description": "会话超时时间(分钟)",
+        "example": 30,
+        "minimum": 5,
+        "maximum": 1440,
+        "default": 30
+      },
+      "allowedDevices": {
+        "type": "array",
+        "description": "允许的设备列表",
+        "items": {
+          "type": "object",
+          "properties": {
+            "deviceId": {
+              "type": "string"
+            },
+            "deviceName": {
+              "type": "string"
+            },
+            "lastLoginTime": {
+              "type": "string",
+              "format": "datetime"
+            }
+          }
+        }
+      }
+    },
+    "timestamps": {
+      "createdAt": {
+        "type": "string",
+        "description": "账户创建时间",
+        "format": "datetime",
+        "example": "2023-01-15T10:30:00Z"
+      },
+      "updatedAt": {
+        "type": "string",
+        "description": "最后更新时间",
+        "format": "datetime",
+        "example": "2024-07-17T15:45:30Z"
+      },
+      "lastLoginAt": {
+        "type": "string",
+        "description": "最后登录时间",
+        "format": "datetime",
+        "example": "2024-07-17T09:20:15Z"
+      },
+      "lastActiveAt": {
+        "type": "string",
+        "description": "最后活跃时间",
+        "format": "datetime",
+        "example": "2024-07-17T15:30:45Z"
+      }
+    }
+  },
+  "userFormData": {
+    "basicInfoForm": {
+      "displayName": "",
+      "bio": "",
+      "gender": "prefer_not_to_say",
+      "birthday": "",
+      "location": {
+        "country": "",
+        "province": "",
+        "city": "",
+        "district": ""
+      }
+    },
+    "accountInfoForm": {
+      "membershipType": "basic"
+    },
+    "privacyForm": {
+      "profileVisibility": "public",
+      "contactVisibility": "friends",
+      "allowFriendRequests": true,
+      "allowMessages": "friends",
+      "showOnlineStatus": true,
+      "allowLocationSharing": false
+    },
+    "notificationForm": {
+      "pushEnabled": true,
+      "soundEnabled": true,
+      "vibrationEnabled": true,
+      "messageNotification": true,
+      "friendRequestNotification": true,
+      "circleActivityNotification": true,
+      "systemNotification": true,
+      "marketingNotification": false,
+      "quietHours": {
+        "enabled": false,
+        "startTime": "22:00",
+        "endTime": "08:00"
+      }
+    },
+    "displayForm": {
+      "theme": "default",
+      "darkMode": false,
+      "fontSize": "medium",
+      "language": "zh-CN",
+      "autoPlayVideo": true,
+      "showAnimations": true,
+      "reducedMotion": false
+    },
+    "functionalForm": {
+      "autoUpdate": true,
+      "dataUsage": "normal",
+      "cacheSize": 500,
+      "autoSaveContent": true,
+      "enableGestures": true,
+      "hapticFeedback": true
+    },
+    "securityForm": {
+      "twoFactorAuth": false,
+      "biometricAuth": false,
+      "loginNotification": true,
+      "sessionTimeout": 30
+    }
+  },
+  "apiEndpoints": {
+    "user": {
+      "getUserProfile": "GET /api/v1/users/{userId}/profile",
+      "updateUserProfile": "PUT /api/v1/users/{userId}/profile",
+      "uploadAvatar": "POST /api/v1/users/{userId}/avatar",
+      "getUserSettings": "GET /api/v1/users/{userId}/settings",
+      "updateUserSettings": "PUT /api/v1/users/{userId}/settings",
+      "deleteUser": "DELETE /api/v1/users/{userId}"
+    },
+    "social": {
+      "getFriendsList": "GET /api/v1/users/{userId}/friends",
+      "getFollowersList": "GET /api/v1/users/{userId}/followers",
+      "getFollowingList": "GET /api/v1/users/{userId}/following",
+      "getCirclesList": "GET /api/v1/users/{userId}/circles"
+    },
+    "security": {
+      "changePassword": "POST /api/v1/users/{userId}/password",
+      "enable2FA": "POST /api/v1/users/{userId}/2fa/enable",
+      "disable2FA": "POST /api/v1/users/{userId}/2fa/disable",
+      "getLoginHistory": "GET /api/v1/users/{userId}/login-history"
+    }
+  },
+  "validationRules": {
+    "username": {
+      "pattern": "^[a-zA-Z0-9_]{3,20}$",
+      "message": "用户名只能包含字母、数字和下划线，长度3-20位"
+    },
+    "phone": {
+      "pattern": "^1[3-9]\\d{9}$",
+      "message": "请输入正确的手机号格式"
+    },
+    "email": {
+      "pattern": "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$",
+      "message": "请输入正确的邮箱格式"
+    },
+    "password": {
+      "pattern": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d@$!%*?&]{8,}$",
+      "message": "密码至少8位，包含大小写字母和数字"
+    },
+    "maxLengths": {
+      "displayName": 50,
+      "bio": 200,
+      "location": 100
+    }
+  },
+  "defaultValues": {
+    "basicInfo": {
+      "avatar": "/static/default-avatar.png",
+      "bio": "这个人很懒，什么都没留下~",
+      "gender": "prefer_not_to_say"
+    },
+    "accountInfo": {
+      "level": 1,
+      "experience": 0,
+      "balance": 0,
+      "points": 0,
+      "verificationStatus": "unverified",
+      "membershipType": "basic"
+    },
+    "socialStats": {
+      "friendsCount": 0,
+      "followsCount": 0,
+      "followersCount": 0,
+      "circlesCount": 0,
+      "postsCount": 0,
+      "likesCount": 0,
+      "collectionsCount": 0
+    },
+    "privacySettings": {
+      "profileVisibility": "public",
+      "contactVisibility": "friends",
+      "allowFriendRequests": true,
+      "allowMessages": "friends",
+      "showOnlineStatus": true,
+      "allowLocationSharing": false
+    },
+    "notificationSettings": {
+      "pushEnabled": true,
+      "soundEnabled": true,
+      "vibrationEnabled": true,
+      "messageNotification": true,
+      "friendRequestNotification": true,
+      "circleActivityNotification": true,
+      "systemNotification": true,
+      "marketingNotification": false,
+      "quietHours": {
+        "enabled": false,
+        "startTime": "22:00",
+        "endTime": "08:00"
+      }
+    },
+    "displaySettings": {
+      "theme": "default",
+      "darkMode": false,
+      "fontSize": "medium",
+      "language": "zh-CN",
+      "autoPlayVideo": true,
+      "showAnimations": true,
+      "reducedMotion": false
+    },
+    "functionalSettings": {
+      "autoUpdate": true,
+      "dataUsage": "normal",
+      "cacheSize": 500,
+      "autoSaveContent": true,
+      "enableGestures": true,
+      "hapticFeedback": true
+    },
+    "securitySettings": {
+      "twoFactorAuth": false,
+      "biometricAuth": false,
+      "loginNotification": true,
+      "sessionTimeout": 30
+    }
+  },
+  "errorCodes": {
+    "USER_NOT_FOUND": {
+      "code": 404001,
+      "message": "用户不存在"
+    },
+    "INVALID_USER_DATA": {
+      "code": 400001,
+      "message": "用户数据格式错误"
+    },
+    "USERNAME_EXISTS": {
+      "code": 409001,
+      "message": "用户名已存在"
+    },
+    "PHONE_EXISTS": {
+      "code": 409002,
+      "message": "手机号已存在"
+    },
+    "EMAIL_EXISTS": {
+      "code": 409003,
+      "message": "邮箱已存在"
+    },
+    "PERMISSION_DENIED": {
+      "code": 403001,
+      "message": "无权限访问"
+    },
+    "AVATAR_UPLOAD_FAILED": {
+      "code": 500001,
+      "message": "头像上传失败"
+    },
+    "VALIDATION_ERROR": {
+      "code": 400002,
+      "message": "数据验证失败"
+    },
+    "SETTINGS_UPDATE_FAILED": {
+      "code": 500002,
+      "message": "设置更新失败"
+    }
+  },
+  "statusCodes": {
+    "ACTIVE": "active",
+    "INACTIVE": "inactive",
+    "SUSPENDED": "suspended",
+    "DELETED": "deleted"
+  },
+  "storageKeys": {
+    "USER_PROFILE": "user_profile",
+    "USER_SETTINGS": "user_settings",
+    "USER_CACHE": "user_cache",
+    "LOGIN_TOKEN": "login_token"
+  }
+}

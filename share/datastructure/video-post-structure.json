@@ -1,0 +1,291 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CICI 视频帖子数据结构",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "description": "帖子唯一ID" },
+    "title": { "type": "string", "description": "帖子标题" },
+    "description": { "type": "string", "description": "帖子正文内容" },
+    "videos": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "url": { "type": "string", "description": "视频文件URL" },
+          "thumbnail": { "type": "string", "description": "视频缩略图URL" },
+          "duration": { "type": "number", "description": "视频时长（秒）" },
+          "width": { "type": "integer", "description": "视频宽度（像素）" },
+          "height": { "type": "integer", "description": "视频高度（像素）" },
+          "size": { "type": "number", "description": "视频文件大小（字节）" },
+          "format": { "type": "string", "description": "视频格式（如mp4、mov等）" },
+          "quality": { "type": "string", "enum": ["720p", "1080p", "4K"], "description": "视频质量" }
+        },
+        "required": ["url", "thumbnail", "duration"]
+      },
+      "description": "视频列表"
+    },
+    "coverImage": { "type": "string", "description": "封面图片URL" },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "标签列表"
+    },
+    "location": { "type": "string", "description": "地理位置" },
+    "createTime": { "type": "string", "format": "date-time", "description": "发布时间" },
+    "viewCount": { "type": "integer", "description": "播放量" },
+    "likeCount": { "type": "integer", "description": "点赞数" },
+    "commentCount": { "type": "integer", "description": "评论数" },
+    "collectCount": { "type": "integer", "description": "收藏数" },
+    "shareCount": { "type": "integer", "description": "分享数" },
+    "isLiked": { "type": "boolean", "description": "当前用户是否点赞" },
+    "isCollected": { "type": "boolean", "description": "当前用户是否收藏" },
+    "isJoined": { "type": "boolean", "description": "当前用户是否参加活动" },
+    "videoType": { 
+      "type": "string", 
+      "enum": ["short", "long", "live", "story"], 
+      "description": "视频类型" 
+    },
+    "playbackSettings": {
+      "type": "object",
+      "properties": {
+        "autoPlay": { "type": "boolean", "description": "是否自动播放" },
+        "loop": { "type": "boolean", "description": "是否循环播放" },
+        "muted": { "type": "boolean", "description": "是否默认静音" },
+        "showControls": { "type": "boolean", "description": "是否显示播放控件" }
+      },
+      "description": "播放设置"
+    },
+    "author": {
+      "type": "object",
+      "description": "博主信息",
+      "properties": {
+        "id": { "type": "string", "description": "博主ID" },
+        "name": { "type": "string", "description": "博主昵称" },
+        "avatar": { "type": "string", "description": "博主头像URL" },
+        "isFollowed": { "type": "boolean", "description": "当前用户是否关注该博主" },
+        "verified": { "type": "boolean", "description": "是否认证用户" },
+        "level": { "type": "integer", "description": "博主等级" },
+        "fansCount": { "type": "integer", "description": "粉丝数" },
+        "followsCount": { "type": "integer", "description": "关注数" },
+        "videosCount": { "type": "integer", "description": "视频数" },
+        "bio": { "type": "string", "description": "个人简介" },
+        "badges": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": { "type": "string", "description": "徽章类型" },
+              "name": { "type": "string", "description": "徽章名称" },
+              "icon": { "type": "string", "description": "徽章图标URL" }
+            }
+          },
+          "description": "博主徽章列表"
+        }
+      },
+      "required": ["id", "name", "avatar"]
+    },
+    "event": {
+      "type": "object",
+      "description": "关联的事件信息（如为活动帖）",
+      "properties": {
+        "id": { "type": "string", "description": "事件ID" },
+        "title": { "type": "string", "description": "事件标题" },
+        "description": { "type": "string", "description": "事件描述" },
+        "startTime": { "type": "string", "format": "date-time", "description": "开始时间" },
+        "endTime": { "type": "string", "format": "date-time", "description": "结束时间" },
+        "location": { "type": "string", "description": "事件地点" },
+        "category": { "type": "string", "description": "事件分类" },
+        "status": { 
+          "type": "string", 
+          "enum": ["upcoming", "ongoing", "ended", "cancelled"], 
+          "description": "事件状态" 
+        },
+        "capacity": { "type": "integer", "description": "容纳人数" },
+        "attendeesCount": { "type": "integer", "description": "已参加人数" },
+        "price": { "type": "number", "description": "活动费用" },
+        "organizer": {
+          "type": "object",
+          "properties": {
+            "id": { "type": "string", "description": "主办方ID" },
+            "name": { "type": "string", "description": "主办方名称" },
+            "contact": { "type": "string", "description": "联系方式" }
+          },
+          "description": "主办方信息"
+        },
+        "requirements": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "参与要求"
+        },
+        "highlights": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "活动亮点"
+        }
+      },
+      "required": ["id", "title"]
+    },
+    "ticket": {
+      "type": "object",
+      "description": "门票信息（如为活动帖）",
+      "properties": {
+        "id": { "type": "string", "description": "门票ID" },
+        "type": { 
+          "type": "string", 
+          "enum": ["electronic", "physical", "virtual"], 
+          "description": "门票类型" 
+        },
+        "price": { "type": "number", "description": "门票价格" },
+        "originalPrice": { "type": "number", "description": "原价（如有折扣）" },
+        "currency": { "type": "string", "default": "CNY", "description": "货币类型" },
+        "status": { 
+          "type": "string", 
+          "enum": ["available", "sold_out", "expired", "cancelled"], 
+          "description": "门票状态" 
+        },
+        "validFrom": { "type": "string", "format": "date-time", "description": "有效开始时间" },
+        "validUntil": { "type": "string", "format": "date-time", "description": "有效结束时间" },
+        "qrCode": { "type": "string", "description": "门票二维码图片URL" },
+        "serialNumber": { "type": "string", "description": "门票序列号" },
+        "seatInfo": {
+          "type": "object",
+          "properties": {
+            "section": { "type": "string", "description": "区域" },
+            "row": { "type": "string", "description": "排" },
+            "seat": { "type": "string", "description": "座位号" }
+          },
+          "description": "座位信息（如适用）"
+        },
+        "benefits": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "门票权益"
+        },
+        "refundPolicy": {
+          "type": "object",
+          "properties": {
+            "refundable": { "type": "boolean", "description": "是否可退款" },
+            "refundDeadline": { "type": "string", "format": "date-time", "description": "退款截止时间" },
+            "refundFee": { "type": "number", "description": "退款手续费" }
+          },
+          "description": "退款政策"
+        }
+      },
+      "required": ["id", "type", "price"]
+    },
+    "interactionData": {
+      "type": "object",
+      "description": "互动数据",
+      "properties": {
+        "playProgress": { "type": "number", "description": "播放进度（0-1）" },
+        "lastPlayTime": { "type": "string", "format": "date-time", "description": "最后播放时间" },
+        "playCount": { "type": "integer", "description": "播放次数" },
+        "completionRate": { "type": "number", "description": "完播率（0-1）" },
+        "engagementScore": { "type": "number", "description": "互动评分" },
+        "hotComments": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "string", "description": "评论ID" },
+              "content": { "type": "string", "description": "评论内容" },
+              "author": { "type": "string", "description": "评论者昵称" },
+              "likeCount": { "type": "integer", "description": "点赞数" },
+              "timestamp": { "type": "number", "description": "评论时间点（秒）" }
+            }
+          },
+          "description": "热门评论"
+        }
+      }
+    },
+    "technicalInfo": {
+      "type": "object",
+      "description": "技术信息",
+      "properties": {
+        "encoding": { "type": "string", "description": "编码格式" },
+        "bitrate": { "type": "number", "description": "码率（kbps）" },
+        "frameRate": { "type": "number", "description": "帧率（fps）" },
+        "aspectRatio": { "type": "string", "description": "宽高比" },
+        "audioInfo": {
+          "type": "object",
+          "properties": {
+            "codec": { "type": "string", "description": "音频编码" },
+            "sampleRate": { "type": "integer", "description": "采样率" },
+            "channels": { "type": "integer", "description": "声道数" }
+          },
+          "description": "音频信息"
+        },
+        "subtitles": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "language": { "type": "string", "description": "字幕语言" },
+              "url": { "type": "string", "description": "字幕文件URL" },
+              "format": { "type": "string", "description": "字幕格式" }
+            }
+          },
+          "description": "字幕信息"
+        }
+      }
+    },
+    "moderationInfo": {
+      "type": "object",
+      "description": "审核信息",
+      "properties": {
+        "status": { 
+          "type": "string", 
+          "enum": ["pending", "approved", "rejected", "flagged"], 
+          "description": "审核状态" 
+        },
+        "reviewedAt": { "type": "string", "format": "date-time", "description": "审核时间" },
+        "reviewedBy": { "type": "string", "description": "审核员ID" },
+        "contentRating": { 
+          "type": "string", 
+          "enum": ["G", "PG", "PG-13", "R"], 
+          "description": "内容分级" 
+        },
+        "flags": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "标记内容"
+        }
+      }
+    },
+    "analytics": {
+      "type": "object",
+      "description": "分析数据",
+      "properties": {
+        "impressions": { "type": "integer", "description": "曝光次数" },
+        "clickThroughRate": { "type": "number", "description": "点击率" },
+        "averageWatchTime": { "type": "number", "description": "平均观看时长（秒）" },
+        "retentionRate": { "type": "number", "description": "留存率" },
+        "bounceRate": { "type": "number", "description": "跳出率" },
+        "demographics": {
+          "type": "object",
+          "properties": {
+            "ageGroups": {
+              "type": "object",
+              "properties": {
+                "18-24": { "type": "number", "description": "18-24岁占比" },
+                "25-34": { "type": "number", "description": "25-34岁占比" },
+                "35-44": { "type": "number", "description": "35-44岁占比" },
+                "45+": { "type": "number", "description": "45岁以上占比" }
+              }
+            },
+            "genderRatio": {
+              "type": "object",
+              "properties": {
+                "male": { "type": "number", "description": "男性占比" },
+                "female": { "type": "number", "description": "女性占比" }
+              }
+            }
+          },
+          "description": "用户画像"
+        }
+      }
+    }
+  },
+  "required": ["id", "title", "description", "videos", "author"],
+  "additionalProperties": false
+}

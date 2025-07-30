@@ -1,0 +1,123 @@
+{
+  "apiEndpoints": {
+    "events": {
+      "create": {
+        "method": "POST",
+        "url": "/api/events",
+        "requestBody": "eventData",
+        "responseType": "eventData"
+      },
+      "update": {
+        "method": "PUT",
+        "url": "/api/events/{id}",
+        "requestBody": "eventData",
+        "responseType": "eventData"
+      },
+      "delete": {
+        "method": "DELETE",
+        "url": "/api/events/{id}",
+        "responseType": "success"
+      },
+      "get": {
+        "method": "GET",
+        "url": "/api/events/{id}",
+        "responseType": "eventData"
+      },
+      "list": {
+        "method": "GET",
+        "url": "/api/events",
+        "queryParams": ["date", "category", "priority"],
+        "responseType": "eventData[]"
+      }
+    },
+    "tickets": {
+      "purchase": {
+        "method": "POST",
+        "url": "/api/tickets/purchase",
+        "requestBody": "ticketPurchaseData",
+        "responseType": "purchaseResult"
+      },
+      "cancel": {
+        "method": "POST",
+        "url": "/api/tickets/{orderId}/cancel",
+        "responseType": "success"
+      },
+      "getOrder": {
+        "method": "GET",
+        "url": "/api/tickets/{orderId}",
+        "responseType": "ticketPurchaseData"
+      },
+      "listOrders": {
+        "method": "GET",
+        "url": "/api/tickets",
+        "queryParams": ["status", "eventId"],
+        "responseType": "ticketPurchaseData[]"
+      }
+    }
+  },
+  "storageKeys": {
+    "localStorage": {
+      "events": "events",
+      "tickets": "tickets",
+      "userPreferences": "userPreferences"
+    },
+    "sessionStorage": {
+      "currentEvent": "currentEvent",
+      "editMode": "editMode"
+    }
+  },
+  "validationRules": {
+    "event": {
+      "title": {
+        "required": true,
+        "minLength": 1,
+        "maxLength": 100,
+        "message": "请输入主题"
+      },
+      "startTime": {
+        "required": true,
+        "message": "请选择开始时间"
+      },
+      "endTime": {
+        "required": true,
+        "message": "请选择结束时间",
+        "custom": "endTime > startTime"
+      },
+      "timeValidation": {
+        "rule": "endDateTime > startDateTime",
+        "message": "结束时间必须晚于开始时间"
+      }
+    },
+    "ticket": {
+      "ticketPrice": {
+        "required": true,
+        "min": 0.01,
+        "message": "请输入票价"
+      },
+      "ticketQuantity": {
+        "required": true,
+        "min": 1,
+        "max": 99,
+        "message": "购买数量必须在1-99之间"
+      }
+    }
+  },
+  "errorMessages": {
+    "validation": {
+      "required": "此字段为必填项",
+      "minLength": "输入内容太短",
+      "maxLength": "输入内容太长",
+      "min": "数值太小",
+      "max": "数值太大",
+      "pattern": "格式不正确"
+    },
+    "operation": {
+      "saveSuccess": "事件已保存",
+      "updateSuccess": "事件已更新",
+      "deleteSuccess": "事件已删除",
+      "purchaseSuccess": "购买成功！总计：¥{amount}",
+      "networkError": "网络连接失败，请重试",
+      "serverError": "服务器错误，请稍后重试"
+    }
+  }
+}

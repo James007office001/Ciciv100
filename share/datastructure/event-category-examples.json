@@ -1,0 +1,348 @@
+{
+  "eventCategories": [
+    {
+      "id": "category_work_meetings",
+      "name": "工作会议",
+      "icon": "📋",
+      "color": "#007AFF",
+      "startTime": "2025-07-18T09:00:00Z",
+      "endTime": "2025-07-18T17:00:00Z",
+      "region": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京",
+        "district": "海淀区",
+        "address": "中关村软件园A座12层",
+        "coordinates": {
+          "latitude": 39.9042,
+          "longitude": 116.4074
+        }
+      },
+      "group": {
+        "id": "group_dev_team",
+        "name": "开发团队",
+        "type": "team",
+        "permissions": {
+          "canView": true,
+          "canEdit": false,
+          "canDelete": false,
+          "canInvite": false
+        }
+      },
+      "members": [
+        {
+          "id": "user_001",
+          "name": "张三",
+          "email": "zhangsan@example.com",
+          "phone": "+86-138-0000-0000",
+          "avatar": "https://example.com/avatar/user_001.jpg",
+          "role": "owner",
+          "status": "active",
+          "joinDate": "2025-07-18T10:00:00Z",
+          "permissions": {
+            "canCreateEvent": true,
+            "canEditEvent": true,
+            "canDeleteEvent": true,
+            "canInviteMembers": true
+          }
+        },
+        {
+          "id": "user_002",
+          "name": "李四",
+          "email": "lisi@example.com",
+          "phone": "+86-138-0000-0001",
+          "avatar": "https://example.com/avatar/user_002.jpg",
+          "role": "admin",
+          "status": "active",
+          "joinDate": "2025-07-18T10:00:00Z",
+          "permissions": {
+            "canCreateEvent": true,
+            "canEditEvent": true,
+            "canDeleteEvent": false,
+            "canInviteMembers": true
+          }
+        },
+        {
+          "id": "user_003",
+          "name": "王五",
+          "email": "wangwu@example.com",
+          "phone": "+86-138-0000-0002",
+          "avatar": "https://example.com/avatar/user_003.jpg",
+          "role": "member",
+          "status": "active",
+          "joinDate": "2025-07-18T10:00:00Z",
+          "permissions": {
+            "canCreateEvent": true,
+            "canEditEvent": false,
+            "canDeleteEvent": false,
+            "canInviteMembers": false
+          }
+        }
+      ],
+      "settings": {
+        "isActive": true,
+        "isPublic": false,
+        "allowJoin": true,
+        "requireApproval": true,
+        "maxMembers": 50,
+        "defaultEventDuration": 60,
+        "reminderSettings": {
+          "enabled": true,
+          "advanceTime": 15,
+          "reminderType": "notification"
+        }
+      },
+      "metadata": {
+        "createdAt": "2025-07-18T10:00:00Z",
+        "updatedAt": "2025-07-18T10:00:00Z",
+        "createdBy": "user_001",
+        "updatedBy": "user_001",
+        "version": "1.0.0",
+        "tags": ["工作", "会议", "定期"],
+        "description": "用于管理工作相关的会议和任务"
+      }
+    },
+    {
+      "id": "category_personal_life",
+      "name": "个人生活",
+      "icon": "🏠",
+      "color": "#34C759",
+      "startTime": "2025-07-18T00:00:00Z",
+      "endTime": "2025-07-18T23:59:59Z",
+      "region": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京",
+        "district": "朝阳区",
+        "address": "望京SOHO",
+        "coordinates": {
+          "latitude": 39.9985,
+          "longitude": 116.4795
+        }
+      },
+      "group": {
+        "id": "group_personal",
+        "name": "个人",
+        "type": "personal",
+        "permissions": {
+          "canView": true,
+          "canEdit": true,
+          "canDelete": true,
+          "canInvite": false
+        }
+      },
+      "members": [
+        {
+          "id": "user_001",
+          "name": "张三",
+          "email": "zhangsan@example.com",
+          "phone": "+86-138-0000-0000",
+          "avatar": "https://example.com/avatar/user_001.jpg",
+          "role": "owner",
+          "status": "active",
+          "joinDate": "2025-07-18T10:00:00Z",
+          "permissions": {
+            "canCreateEvent": true,
+            "canEditEvent": true,
+            "canDeleteEvent": true,
+            "canInviteMembers": true
+          }
+        }
+      ],
+      "settings": {
+        "isActive": true,
+        "isPublic": false,
+        "allowJoin": false,
+        "requireApproval": false,
+        "maxMembers": 1,
+        "defaultEventDuration": 30,
+        "reminderSettings": {
+          "enabled": true,
+          "advanceTime": 10,
+          "reminderType": "notification"
+        }
+      },
+      "metadata": {
+        "createdAt": "2025-07-18T10:00:00Z",
+        "updatedAt": "2025-07-18T10:00:00Z",
+        "createdBy": "user_001",
+        "updatedBy": "user_001",
+        "version": "1.0.0",
+        "tags": ["个人", "生活", "日常"],
+        "description": "用于管理个人生活相关的事件和活动"
+      }
+    },
+    {
+      "id": "category_health_fitness",
+      "name": "健康健身",
+      "icon": "🏃‍♂️",
+      "color": "#FF3B30",
+      "startTime": "2025-07-18T06:00:00Z",
+      "endTime": "2025-07-18T22:00:00Z",
+      "region": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京",
+        "district": "海淀区",
+        "address": "奥林匹克公园",
+        "coordinates": {
+          "latitude": 39.9925,
+          "longitude": 116.3972
+        }
+      },
+      "group": {
+        "id": "group_fitness",
+        "name": "健身小组",
+        "type": "team",
+        "permissions": {
+          "canView": true,
+          "canEdit": false,
+          "canDelete": false,
+          "canInvite": true
+        }
+      },
+      "members": [
+        {
+          "id": "user_001",
+          "name": "张三",
+          "email": "zhangsan@example.com",
+          "phone": "+86-138-0000-0000",
+          "avatar": "https://example.com/avatar/user_001.jpg",
+          "role": "owner",
+          "status": "active",
+          "joinDate": "2025-07-18T10:00:00Z",
+          "permissions": {
+            "canCreateEvent": true,
+            "canEditEvent": true,
+            "canDeleteEvent": true,
+            "canInviteMembers": true
+          }
+        },
+        {
+          "id": "user_004",
+          "name": "赵六",
+          "email": "zhaoliu@example.com",
+          "phone": "+86-138-0000-0003",
+          "avatar": "https://example.com/avatar/user_004.jpg",
+          "role": "member",
+          "status": "active",
+          "joinDate": "2025-07-18T10:00:00Z",
+          "permissions": {
+            "canCreateEvent": true,
+            "canEditEvent": false,
+            "canDeleteEvent": false,
+            "canInviteMembers": false
+          }
+        }
+      ],
+      "settings": {
+        "isActive": true,
+        "isPublic": true,
+        "allowJoin": true,
+        "requireApproval": false,
+        "maxMembers": 20,
+        "defaultEventDuration": 90,
+        "reminderSettings": {
+          "enabled": true,
+          "advanceTime": 30,
+          "reminderType": "all"
+        }
+      },
+      "metadata": {
+        "createdAt": "2025-07-18T10:00:00Z",
+        "updatedAt": "2025-07-18T10:00:00Z",
+        "createdBy": "user_001",
+        "updatedBy": "user_001",
+        "version": "1.0.0",
+        "tags": ["健康", "健身", "运动", "团队"],
+        "description": "用于管理健康健身相关的活动和训练计划"
+      }
+    },
+    {
+      "id": "category_study_learning",
+      "name": "学习教育",
+      "icon": "📚",
+      "color": "#FF9500",
+      "startTime": "2025-07-18T08:00:00Z",
+      "endTime": "2025-07-18T20:00:00Z",
+      "region": {
+        "country": "中国",
+        "province": "北京市",
+        "city": "北京",
+        "district": "海淀区",
+        "address": "北京大学",
+        "coordinates": {
+          "latitude": 39.9990,
+          "longitude": 116.3059
+        }
+      },
+      "group": {
+        "id": "group_study",
+        "name": "学习小组",
+        "type": "team",
+        "permissions": {
+          "canView": true,
+          "canEdit": false,
+          "canDelete": false,
+          "canInvite": true
+        }
+      },
+      "members": [
+        {
+          "id": "user_001",
+          "name": "张三",
+          "email": "zhangsan@example.com",
+          "phone": "+86-138-0000-0000",
+          "avatar": "https://example.com/avatar/user_001.jpg",
+          "role": "owner",
+          "status": "active",
+          "joinDate": "2025-07-18T10:00:00Z",
+          "permissions": {
+            "canCreateEvent": true,
+            "canEditEvent": true,
+            "canDeleteEvent": true,
+            "canInviteMembers": true
+          }
+        },
+        {
+          "id": "user_005",
+          "name": "孙七",
+          "email": "sunqi@example.com",
+          "phone": "+86-138-0000-0004",
+          "avatar": "https://example.com/avatar/user_005.jpg",
+          "role": "member",
+          "status": "active",
+          "joinDate": "2025-07-18T10:00:00Z",
+          "permissions": {
+            "canCreateEvent": true,
+            "canEditEvent": false,
+            "canDeleteEvent": false,
+            "canInviteMembers": false
+          }
+        }
+      ],
+      "settings": {
+        "isActive": true,
+        "isPublic": true,
+        "allowJoin": true,
+        "requireApproval": true,
+        "maxMembers": 30,
+        "defaultEventDuration": 120,
+        "reminderSettings": {
+          "enabled": true,
+          "advanceTime": 20,
+          "reminderType": "notification"
+        }
+      },
+      "metadata": {
+        "createdAt": "2025-07-18T10:00:00Z",
+        "updatedAt": "2025-07-18T10:00:00Z",
+        "createdBy": "user_001",
+        "updatedBy": "user_001",
+        "version": "1.0.0",
+        "tags": ["学习", "教育", "培训", "团队"],
+        "description": "用于管理学习和教育相关的活动和课程"
+      }
+    }
+  ]
+}

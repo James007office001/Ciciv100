@@ -1,0 +1,490 @@
+{
+  "eventForm": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "description": "事件主题",
+      "placeholder": "请输入主题",
+      "maxLength": 100
+    },
+    "date": {
+      "type": "string",
+      "required": true,
+      "description": "事件日期",
+      "format": "YYYY-MM-DD"
+    },
+    "startTime": {
+      "type": "string",
+      "required": true,
+      "description": "开始时间",
+      "format": "HH:mm",
+      "default": "09:00"
+    },
+    "endTime": {
+      "type": "string",
+      "required": true,
+      "description": "结束时间",
+      "format": "HH:mm",
+      "default": "10:00"
+    },
+    "allDay": {
+      "type": "boolean",
+      "required": false,
+      "description": "是否全天事件",
+      "default": false
+    },
+    "location": {
+      "type": "string",
+      "required": false,
+      "description": "事件地点",
+      "placeholder": "请输入地点（可选）",
+      "maxLength": 200
+    },
+    "participants": {
+      "type": "string",
+      "required": false,
+      "description": "参与同伴",
+      "placeholder": "请输入同伴（可选）",
+      "maxLength": 500
+    },
+    "categoryIndex": {
+      "type": "number",
+      "required": true,
+      "description": "事件分类索引",
+      "default": 1,
+      "options": [
+        { "index": 0, "name": "全部分类", "icon": "📋" },
+        { "index": 1, "name": "工作", "icon": "💼" },
+        { "index": 2, "name": "个人", "icon": "👤" },
+        { "index": 3, "name": "学习", "icon": "📚" },
+        { "index": 4, "name": "运动", "icon": "⚽" },
+        { "index": 5, "name": "娱乐", "icon": "🎮" }
+      ]
+    },
+    "priority": {
+      "type": "string",
+      "required": true,
+      "description": "优先级（艾森豪威尔矩阵）",
+      "default": "important-not-urgent",
+      "options": [
+        {
+          "value": "important-urgent",
+          "label": "重要且紧急",
+          "description": "立即处理",
+          "color": "#FF3B30",
+          "icon": "🔥"
+        },
+        {
+          "value": "important-not-urgent",
+          "label": "重要但不紧急",
+          "description": "安排时间处理",
+          "color": "#FF9500",
+          "icon": "📋"
+        },
+        {
+          "value": "not-important-urgent",
+          "label": "不重要但紧急",
+          "description": "委托他人处理",
+          "color": "#007AFF",
+          "icon": "⚡"
+        },
+        {
+          "value": "not-important-not-urgent",
+          "label": "不重要且不紧急",
+          "description": "有时间再处理",
+          "color": "#34C759",
+          "icon": "⏰"
+        }
+      ]
+    },
+    "description": {
+      "type": "string",
+      "required": false,
+      "description": "备注信息",
+      "placeholder": "请输入备注信息（可选）",
+      "maxLength": 500
+    },
+    "timeReminder": {
+      "type": "number",
+      "required": false,
+      "description": "时间提醒（分钟）",
+      "default": 15,
+      "options": [
+        { "label": "不提醒", "value": 0 },
+        { "label": "准时提醒", "value": 0 },
+        { "label": "提前5分钟", "value": 5 },
+        { "label": "提前15分钟", "value": 15 },
+        { "label": "提前30分钟", "value": 30 },
+        { "label": "提前1小时", "value": 60 },
+        { "label": "提前1天", "value": 1440 }
+      ]
+    },
+    "locationReminder": {
+      "type": "boolean",
+      "required": false,
+      "description": "地点提醒（基于GPS定位）",
+      "default": false
+    },
+    "repeatIndex": {
+      "type": "number",
+      "required": false,
+      "description": "重复选项索引",
+      "default": 0,
+      "options": [
+        { "index": 0, "label": "不重复", "value": "none" },
+        { "index": 1, "label": "每天", "value": "daily" },
+        { "index": 2, "label": "每周", "value": "weekly" },
+        { "index": 3, "label": "每月", "value": "monthly" },
+        { "index": 4, "label": "每年", "value": "yearly" },
+        { "index": 5, "label": "自定义", "value": "custom" }
+      ]
+    }
+  },
+  "eventData": {
+    "id": {
+      "type": "number",
+      "required": true,
+      "description": "事件唯一标识",
+      "autoGenerate": "timestamp"
+    },
+    "title": {
+      "type": "string",
+      "required": true,
+      "description": "事件标题"
+    },
+    "date": {
+      "type": "string",
+      "required": true,
+      "description": "事件日期",
+      "format": "YYYY-MM-DD"
+    },
+    "startTime": {
+      "type": "string",
+      "required": true,
+      "description": "开始时间",
+      "format": "HH:mm"
+    },
+    "endTime": {
+      "type": "string",
+      "required": true,
+      "description": "结束时间",
+      "format": "HH:mm"
+    },
+    "category": {
+      "type": "string",
+      "required": true,
+      "description": "事件分类名称"
+    },
+    "categoryIcon": {
+      "type": "string",
+      "required": true,
+      "description": "分类图标"
+    },
+    "priority": {
+      "type": "string",
+      "required": true,
+      "description": "优先级值"
+    },
+    "priorityLabel": {
+      "type": "string",
+      "required": true,
+      "description": "优先级标签"
+    },
+    "color": {
+      "type": "string",
+      "required": true,
+      "description": "优先级颜色",
+      "format": "hex"
+    },
+    "location": {
+      "type": "string",
+      "required": false,
+      "description": "事件地点"
+    },
+    "participants": {
+      "type": "string",
+      "required": false,
+      "description": "参与者"
+    },
+    "description": {
+      "type": "string",
+      "required": false,
+      "description": "事件描述"
+    },
+    "timeReminder": {
+      "type": "number",
+      "required": false,
+      "description": "时间提醒（分钟）"
+    },
+    "locationReminder": {
+      "type": "boolean",
+      "required": false,
+      "description": "是否启用地点提醒"
+    },
+    "ticketReference": {
+      "type": "reference",
+      "required": false,
+      "description": "门票数据引用",
+      "referenceType": "ticket",
+      "referenceFile": "./ticket-structure.json",
+      "referenceSchema": "ticketSchema",
+      "relationship": "one-to-many",
+      "foreignKey": "eventId"
+    }
+  },
+  "dateTimeIndexes": {
+    "startYearIndex": {
+      "type": "number",
+      "description": "开始年份索引",
+      "range": "0-2"
+    },
+    "startMonthIndex": {
+      "type": "number",
+      "description": "开始月份索引",
+      "range": "0-11"
+    },
+    "startDayIndex": {
+      "type": "number",
+      "description": "开始日期索引",
+      "range": "0-30"
+    },
+    "startHourIndex": {
+      "type": "number",
+      "description": "开始小时索引",
+      "range": "0-23"
+    },
+    "startMinuteIndex": {
+      "type": "number",
+      "description": "开始分钟索引（5分钟间隔）",
+      "range": "0-11"
+    },
+    "endYearIndex": {
+      "type": "number",
+      "description": "结束年份索引",
+      "range": "0-2"
+    },
+    "endMonthIndex": {
+      "type": "number",
+      "description": "结束月份索引",
+      "range": "0-11"
+    },
+    "endDayIndex": {
+      "type": "number",
+      "description": "结束日期索引",
+      "range": "0-30"
+    },
+    "endHourIndex": {
+      "type": "number",
+      "description": "结束小时索引",
+      "range": "0-23"
+    },
+    "endMinuteIndex": {
+      "type": "number",
+      "description": "结束分钟索引（5分钟间隔）",
+      "range": "0-11"
+    }
+  },
+  "extendedEventData": {
+    "id": {
+      "type": "number",
+      "required": true,
+      "description": "事件唯一标识",
+      "autoGenerate": "timestamp"
+    },
+    "title": {
+      "type": "string",
+      "required": true,
+      "description": "事件标题"
+    },
+    "date": {
+      "type": "string",
+      "required": true,
+      "description": "事件日期",
+      "format": "YYYY-MM-DD"
+    },
+    "startTime": {
+      "type": "string",
+      "required": true,
+      "description": "开始时间",
+      "format": "HH:mm"
+    },
+    "endTime": {
+      "type": "string",
+      "required": true,
+      "description": "结束时间",
+      "format": "HH:mm"
+    },
+    "category": {
+      "type": "string",
+      "required": true,
+      "description": "事件分类名称"
+    },
+    "categoryIcon": {
+      "type": "string",
+      "required": true,
+      "description": "分类图标"
+    },
+    "priority": {
+      "type": "string",
+      "required": true,
+      "description": "优先级值"
+    },
+    "priorityLabel": {
+      "type": "string",
+      "required": true,
+      "description": "优先级标签"
+    },
+    "color": {
+      "type": "string",
+      "required": true,
+      "description": "优先级颜色",
+      "format": "hex"
+    },
+    "location": {
+      "type": "string",
+      "required": false,
+      "description": "事件地点"
+    },
+    "participants": {
+      "type": "string",
+      "required": false,
+      "description": "参与者"
+    },
+    "description": {
+      "type": "string",
+      "required": false,
+      "description": "事件描述"
+    },
+    "timeReminder": {
+      "type": "number",
+      "required": false,
+      "description": "时间提醒（分钟）"
+    },
+    "locationReminder": {
+      "type": "boolean",
+      "required": false,
+      "description": "是否启用地点提醒"
+    },
+    "ticketsReference": {
+      "type": "reference",
+      "required": false,
+      "description": "门票数据引用",
+      "referenceType": "ticket",
+      "referenceFile": "./ticket-structure.json",
+      "referenceSchema": "ticketSchema",
+      "relationship": "one-to-many",
+      "foreignKey": "eventId",
+      "conditions": {
+        "isActive": true
+      },
+      "transform": "function(ticketData) { return { ...ticketData, eventLinked: true }; }"
+    },
+    "venueReference": {
+      "type": "reference",
+      "required": false,
+      "description": "场地信息引用",
+      "referenceType": "venue",
+      "referenceFile": "./venue-structure.json",
+      "referenceSchema": "venueSchema",
+      "relationship": "many-to-one",
+      "foreignKey": "venueId"
+    },
+    "organizerReference": {
+      "type": "reference",
+      "required": false,
+      "description": "主办方信息引用",
+      "referenceType": "organizer",
+      "referenceFile": "./organizer-structure.json",
+      "referenceSchema": "organizerSchema",
+      "relationship": "many-to-one",
+      "foreignKey": "organizerId"
+    }
+  },
+  "referenceConfig": {
+    "supportedTypes": [
+      "ticket",
+      "venue", 
+      "organizer",
+      "sponsor",
+      "media"
+    ],
+    "relationships": [
+      "one-to-one",
+      "one-to-many", 
+      "many-to-one",
+      "many-to-many"
+    ],
+    "referenceFields": {
+      "type": {
+        "required": true,
+        "value": "reference",
+        "description": "标识这是一个引用字段"
+      },
+      "referenceType": {
+        "required": true,
+        "description": "引用的数据类型"
+      },
+      "referenceFile": {
+        "required": true,
+        "description": "引用的文件路径（相对路径）"
+      },
+      "referenceSchema": {
+        "required": false,
+        "description": "引用文件中的具体schema名称"
+      },
+      "relationship": {
+        "required": false,
+        "default": "one-to-one",
+        "description": "数据关系类型"
+      },
+      "foreignKey": {
+        "required": false,
+        "description": "外键字段名"
+      },
+      "conditions": {
+        "required": false,
+        "description": "筛选条件对象"
+      },
+      "transform": {
+        "required": false,
+        "description": "数据转换函数（字符串形式）"
+      },
+      "lazy": {
+        "required": false,
+        "default": false,
+        "description": "是否延迟加载"
+      },
+      "cache": {
+        "required": false,
+        "default": true,
+        "description": "是否缓存引用结果"
+      }
+    }
+  },
+  "parsingInstructions": {
+    "description": "扩展JSON解析说明",
+    "steps": [
+      "1. 识别type为'reference'的字段",
+      "2. 根据referenceFile加载引用文件",
+      "3. 提取referenceSchema指定的数据结构",
+      "4. 应用conditions进行数据过滤",
+      "5. 根据relationship确定数据关系",
+      "6. 执行transform函数进行数据转换",
+      "7. 将解析结果合并到原数据结构中"
+    ],
+    "usage": {
+      "javascript": "const parser = new ExtendedJsonParser(); const result = await parser.parseWithReferences(jsonData, basePath);",
+      "validation": "const validation = await parser.validateReferences(jsonData, basePath);"
+    },
+    "features": [
+      "支持嵌套引用",
+      "循环引用检测",
+      "缓存机制",
+      "条件过滤",
+      "数据转换",
+      "关系映射",
+      "延迟加载",
+      "引用验证"
+    ]
+  }
+}

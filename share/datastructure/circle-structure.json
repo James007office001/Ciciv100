@@ -1,0 +1,1018 @@
+{
+  "circleSchema": {
+    "basicInfo": {
+      "id": {
+        "type": "string",
+        "description": "圈子唯一标识符",
+        "example": "circle_123456789",
+        "required": true
+      },
+      "name": {
+        "type": "string",
+        "description": "圈子名称",
+        "example": "摄影爱好者",
+        "minLength": 2,
+        "maxLength": 30,
+        "required": true
+      },
+      "avatar": {
+        "type": "string",
+        "description": "圈子头像URL",
+        "example": "/static/circles/photography_circle.jpg",
+        "required": false
+      },
+      "coverImage": {
+        "type": "string",
+        "description": "圈子封面图片URL",
+        "example": "/static/circles/covers/photography_cover.jpg",
+        "required": false
+      },
+      "description": {
+        "type": "string",
+        "description": "圈子简介",
+        "example": "分享摄影技巧，交流摄影心得，记录美好瞬间",
+        "maxLength": 200,
+        "required": false
+      },
+      "category": {
+        "type": "string",
+        "description": "圈子分类",
+        "enum": ["photography", "fitness", "food", "travel", "technology", "music", "art", "education", "business", "lifestyle", "gaming", "sports", "other"],
+        "example": "photography",
+        "required": true
+      },
+      "tags": {
+        "type": "array",
+        "description": "圈子标签",
+        "items": {
+          "type": "string",
+          "maxLength": 10
+        },
+        "maxItems": 5,
+        "example": ["摄影", "技巧", "分享", "交流"],
+        "required": false
+      },
+      "location": {
+        "type": "object",
+        "description": "圈子地理位置（可选）",
+        "properties": {
+          "country": {
+            "type": "string",
+            "example": "中国"
+          },
+          "province": {
+            "type": "string",
+            "example": "广东省"
+          },
+          "city": {
+            "type": "string",
+            "example": "深圳市"
+          },
+          "district": {
+            "type": "string",
+            "example": "南山区"
+          },
+          "latitude": {
+            "type": "number",
+            "example": 22.5431
+          },
+          "longitude": {
+            "type": "number",
+            "example": 113.9434
+          }
+        },
+        "required": false
+      }
+    },
+    "managementInfo": {
+      "creatorId": {
+        "type": "string",
+        "description": "创建者用户ID",
+        "example": "user_123456789",
+        "required": true
+      },
+      "administratorIds": {
+        "type": "array",
+        "description": "管理员用户ID列表",
+        "items": {
+          "type": "string"
+        },
+        "example": ["user_123456789", "user_987654321"],
+        "default": []
+      },
+      "moderatorIds": {
+        "type": "array",
+        "description": "版主用户ID列表",
+        "items": {
+          "type": "string"
+        },
+        "example": ["user_456789123"],
+        "default": []
+      },
+      "visibility": {
+        "type": "string",
+        "description": "圈子可见性",
+        "enum": ["public", "private", "invite_only"],
+        "example": "public",
+        "default": "public"
+      },
+      "joinPolicy": {
+        "type": "string",
+        "description": "加入政策",
+        "enum": ["open", "approval_required", "invite_only"],
+        "example": "open",
+        "default": "open"
+      },
+      "contentModeration": {
+        "type": "string",
+        "description": "内容审核政策",
+        "enum": ["none", "moderate", "strict"],
+        "example": "moderate",
+        "default": "moderate"
+      }
+    },
+    "statisticsInfo": {
+      "membersCount": {
+        "type": "number",
+        "description": "成员总数",
+        "example": 1256,
+        "minimum": 0,
+        "default": 0
+      },
+      "postsCount": {
+        "type": "number",
+        "description": "动态总数",
+        "example": 3421,
+        "minimum": 0,
+        "default": 0
+      },
+      "activeMembers": {
+        "type": "number",
+        "description": "活跃成员数（30天内）",
+        "example": 368,
+        "minimum": 0,
+        "default": 0
+      },
+      "todayPosts": {
+        "type": "number",
+        "description": "今日新增动态数",
+        "example": 15,
+        "minimum": 0,
+        "default": 0
+      },
+      "weeklyPosts": {
+        "type": "number",
+        "description": "本周新增动态数",
+        "example": 89,
+        "minimum": 0,
+        "default": 0
+      },
+      "monthlyPosts": {
+        "type": "number",
+        "description": "本月新增动态数",
+        "example": 234,
+        "minimum": 0,
+        "default": 0
+      },
+      "likesCount": {
+        "type": "number",
+        "description": "总点赞数",
+        "example": 15678,
+        "minimum": 0,
+        "default": 0
+      },
+      "commentsCount": {
+        "type": "number",
+        "description": "总评论数",
+        "example": 5432,
+        "minimum": 0,
+        "default": 0
+      },
+      "sharesCount": {
+        "type": "number",
+        "description": "总分享数",
+        "example": 891,
+        "minimum": 0,
+        "default": 0
+      }
+    },
+    "membershipInfo": {
+      "membershipLevels": {
+        "type": "array",
+        "description": "成员等级定义",
+        "items": {
+          "type": "object",
+          "properties": {
+            "level": {
+              "type": "string",
+              "enum": ["owner", "admin", "moderator", "vip", "member", "newbie"]
+            },
+            "name": {
+              "type": "string",
+              "example": "圈主"
+            },
+            "permissions": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "example": ["post", "comment", "like", "share", "invite", "moderate", "admin"]
+            },
+            "badge": {
+              "type": "string",
+              "description": "等级徽章",
+              "example": "👑"
+            }
+          }
+        },
+        "default": [
+          {
+            "level": "owner",
+            "name": "圈主",
+            "permissions": ["post", "comment", "like", "share", "invite", "moderate", "admin", "delete_circle"],
+            "badge": "👑"
+          },
+          {
+            "level": "admin",
+            "name": "管理员",
+            "permissions": ["post", "comment", "like", "share", "invite", "moderate", "admin"],
+            "badge": "⭐"
+          },
+          {
+            "level": "moderator",
+            "name": "版主",
+            "permissions": ["post", "comment", "like", "share", "invite", "moderate"],
+            "badge": "🛡️"
+          },
+          {
+            "level": "vip",
+            "name": "VIP成员",
+            "permissions": ["post", "comment", "like", "share", "invite"],
+            "badge": "💎"
+          },
+          {
+            "level": "member",
+            "name": "成员",
+            "permissions": ["post", "comment", "like", "share"],
+            "badge": "👤"
+          },
+          {
+            "level": "newbie",
+            "name": "新成员",
+            "permissions": ["comment", "like"],
+            "badge": "🆕"
+          }
+        ]
+      },
+      "joinRequests": {
+        "type": "array",
+        "description": "待审核的加入请求",
+        "items": {
+          "type": "object",
+          "properties": {
+            "requestId": {
+              "type": "string"
+            },
+            "userId": {
+              "type": "string"
+            },
+            "requestTime": {
+              "type": "string",
+              "format": "datetime"
+            },
+            "message": {
+              "type": "string",
+              "maxLength": 200
+            },
+            "status": {
+              "type": "string",
+              "enum": ["pending", "approved", "rejected"]
+            }
+          }
+        },
+        "default": []
+      }
+    },
+    "settingsInfo": {
+      "allowInvitations": {
+        "type": "boolean",
+        "description": "是否允许成员邀请他人",
+        "default": true
+      },
+      "allowMemberPosts": {
+        "type": "boolean",
+        "description": "是否允许普通成员发帖",
+        "default": true
+      },
+      "requirePostApproval": {
+        "type": "boolean",
+        "description": "是否需要审核帖子",
+        "default": false
+      },
+      "allowExternalSharing": {
+        "type": "boolean",
+        "description": "是否允许分享到圈外",
+        "default": true
+      },
+      "notificationSettings": {
+        "type": "object",
+        "description": "通知设置",
+        "properties": {
+          "newMemberNotify": {
+            "type": "boolean",
+            "description": "新成员加入通知",
+            "default": true
+          },
+          "newPostNotify": {
+            "type": "boolean",
+            "description": "新动态通知",
+            "default": true
+          },
+          "adminActionNotify": {
+            "type": "boolean",
+            "description": "管理操作通知",
+            "default": true
+          }
+        }
+      },
+      "postingRules": {
+        "type": "array",
+        "description": "发帖规则",
+        "items": {
+          "type": "string"
+        },
+        "example": [
+          "发布内容需积极向上",
+          "禁止发布广告信息",
+          "尊重他人，文明交流",
+          "分享原创作品优先"
+        ],
+        "default": []
+      }
+    },
+    "activityInfo": {
+      "events": {
+        "type": "array",
+        "description": "圈子活动列表",
+        "items": {
+          "type": "object",
+          "properties": {
+            "eventId": {
+              "type": "string"
+            },
+            "title": {
+              "type": "string",
+              "maxLength": 50
+            },
+            "description": {
+              "type": "string",
+              "maxLength": 500
+            },
+            "startTime": {
+              "type": "string",
+              "format": "datetime"
+            },
+            "endTime": {
+              "type": "string",
+              "format": "datetime"
+            },
+            "location": {
+              "type": "string"
+            },
+            "participantLimit": {
+              "type": "number",
+              "minimum": 1
+            },
+            "currentParticipants": {
+              "type": "number",
+              "minimum": 0
+            },
+            "status": {
+              "type": "string",
+              "enum": ["draft", "published", "ongoing", "completed", "cancelled"]
+            }
+          }
+        },
+        "default": []
+      },
+      "announcements": {
+        "type": "array",
+        "description": "圈子公告",
+        "items": {
+          "type": "object",
+          "properties": {
+            "announcementId": {
+              "type": "string"
+            },
+            "title": {
+              "type": "string",
+              "maxLength": 50
+            },
+            "content": {
+              "type": "string",
+              "maxLength": 1000
+            },
+            "priority": {
+              "type": "string",
+              "enum": ["low", "medium", "high", "urgent"]
+            },
+            "publishTime": {
+              "type": "string",
+              "format": "datetime"
+            },
+            "isSticky": {
+              "type": "boolean",
+              "default": false
+            }
+          }
+        },
+        "default": []
+      }
+    },
+    "timestamps": {
+      "createdAt": {
+        "type": "string",
+        "description": "创建时间",
+        "format": "datetime",
+        "example": "2023-01-15T10:30:00Z",
+        "required": true
+      },
+      "updatedAt": {
+        "type": "string",
+        "description": "最后更新时间",
+        "format": "datetime",
+        "example": "2024-07-17T15:45:30Z",
+        "required": true
+      },
+      "lastActivityAt": {
+        "type": "string",
+        "description": "最后活跃时间",
+        "format": "datetime",
+        "example": "2024-07-17T14:20:15Z",
+        "required": false
+      }
+    }
+  },
+  "circleMemberSchema": {
+    "memberInfo": {
+      "memberId": {
+        "type": "string",
+        "description": "成员关系唯一标识",
+        "example": "member_123456789",
+        "required": true
+      },
+      "circleId": {
+        "type": "string",
+        "description": "圈子ID",
+        "example": "circle_123456789",
+        "required": true
+      },
+      "userId": {
+        "type": "string",
+        "description": "用户ID",
+        "example": "user_123456789",
+        "required": true
+      },
+      "memberLevel": {
+        "type": "string",
+        "description": "成员等级",
+        "enum": ["owner", "admin", "moderator", "vip", "member", "newbie"],
+        "example": "member",
+        "default": "newbie"
+      },
+      "joinStatus": {
+        "type": "string",
+        "description": "加入状态",
+        "enum": ["joined", "pending", "rejected", "banned", "left"],
+        "example": "joined",
+        "required": true
+      }
+    },
+    "activityInfo": {
+      "joinedAt": {
+        "type": "string",
+        "description": "加入时间",
+        "format": "datetime",
+        "example": "2024-01-15T10:30:00Z",
+        "required": true
+      },
+      "lastActiveAt": {
+        "type": "string",
+        "description": "最后活跃时间",
+        "format": "datetime",
+        "example": "2024-07-17T14:20:15Z",
+        "required": false
+      },
+      "postsCount": {
+        "type": "number",
+        "description": "发帖数量",
+        "example": 25,
+        "minimum": 0,
+        "default": 0
+      },
+      "commentsCount": {
+        "type": "number",
+        "description": "评论数量",
+        "example": 156,
+        "minimum": 0,
+        "default": 0
+      },
+      "likesGiven": {
+        "type": "number",
+        "description": "给出的点赞数",
+        "example": 234,
+        "minimum": 0,
+        "default": 0
+      },
+      "likesReceived": {
+        "type": "number",
+        "description": "收到的点赞数",
+        "example": 189,
+        "minimum": 0,
+        "default": 0
+      }
+    },
+    "permissionsInfo": {
+      "canPost": {
+        "type": "boolean",
+        "description": "是否可以发帖",
+        "default": true
+      },
+      "canComment": {
+        "type": "boolean",
+        "description": "是否可以评论",
+        "default": true
+      },
+      "canInvite": {
+        "type": "boolean",
+        "description": "是否可以邀请他人",
+        "default": false
+      },
+      "canModerate": {
+        "type": "boolean",
+        "description": "是否可以管理内容",
+        "default": false
+      },
+      "mutedUntil": {
+        "type": "string",
+        "description": "禁言到期时间",
+        "format": "datetime",
+        "required": false
+      }
+    }
+  },
+  "circlePostSchema": {
+    "postInfo": {
+      "postId": {
+        "type": "string",
+        "description": "帖子唯一标识",
+        "example": "post_123456789",
+        "required": true
+      },
+      "circleId": {
+        "type": "string",
+        "description": "所属圈子ID",
+        "example": "circle_123456789",
+        "required": true
+      },
+      "authorId": {
+        "type": "string",
+        "description": "作者用户ID",
+        "example": "user_123456789",
+        "required": true
+      },
+      "title": {
+        "type": "string",
+        "description": "帖子标题",
+        "example": "分享一些摄影技巧",
+        "maxLength": 100,
+        "required": false
+      },
+      "content": {
+        "type": "string",
+        "description": "帖子内容",
+        "example": "今天想和大家分享一些人像摄影的技巧...",
+        "maxLength": 2000,
+        "required": true
+      },
+      "contentType": {
+        "type": "string",
+        "description": "内容类型",
+        "enum": ["text", "image", "video", "link", "poll"],
+        "example": "image",
+        "default": "text"
+      },
+      "mediaFiles": {
+        "type": "array",
+        "description": "媒体文件列表",
+        "items": {
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string",
+              "enum": ["image", "video", "audio"]
+            },
+            "thumbnail": {
+              "type": "string"
+            },
+            "size": {
+              "type": "number"
+            },
+            "duration": {
+              "type": "number",
+              "description": "视频/音频时长（秒）"
+            }
+          }
+        },
+        "maxItems": 9,
+        "default": []
+      }
+    },
+    "interactionInfo": {
+      "likesCount": {
+        "type": "number",
+        "description": "点赞数",
+        "example": 128,
+        "minimum": 0,
+        "default": 0
+      },
+      "commentsCount": {
+        "type": "number",
+        "description": "评论数",
+        "example": 45,
+        "minimum": 0,
+        "default": 0
+      },
+      "sharesCount": {
+        "type": "number",
+        "description": "分享数",
+        "example": 23,
+        "minimum": 0,
+        "default": 0
+      },
+      "viewsCount": {
+        "type": "number",
+        "description": "浏览数",
+        "example": 567,
+        "minimum": 0,
+        "default": 0
+      }
+    },
+    "statusInfo": {
+      "status": {
+        "type": "string",
+        "description": "帖子状态",
+        "enum": ["draft", "published", "hidden", "deleted", "pending_review"],
+        "example": "published",
+        "default": "published"
+      },
+      "isSticky": {
+        "type": "boolean",
+        "description": "是否置顶",
+        "default": false
+      },
+      "isHot": {
+        "type": "boolean",
+        "description": "是否热门",
+        "default": false
+      },
+      "tags": {
+        "type": "array",
+        "description": "帖子标签",
+        "items": {
+          "type": "string"
+        },
+        "maxItems": 5,
+        "example": ["摄影技巧", "人像", "教程"],
+        "default": []
+      }
+    },
+    "timestamps": {
+      "createdAt": {
+        "type": "string",
+        "description": "创建时间",
+        "format": "datetime",
+        "example": "2024-07-17T10:30:00Z",
+        "required": true
+      },
+      "updatedAt": {
+        "type": "string",
+        "description": "最后更新时间",
+        "format": "datetime",
+        "example": "2024-07-17T15:45:30Z",
+        "required": true
+      },
+      "publishedAt": {
+        "type": "string",
+        "description": "发布时间",
+        "format": "datetime",
+        "example": "2024-07-17T10:35:00Z",
+        "required": false
+      }
+    }
+  },
+  "circleFormData": {
+    "createCircleForm": {
+      "name": "",
+      "description": "",
+      "category": "other",
+      "tags": [],
+      "visibility": "public",
+      "joinPolicy": "open",
+      "location": {
+        "country": "",
+        "province": "",
+        "city": "",
+        "district": ""
+      }
+    },
+    "circleSettingsForm": {
+      "allowInvitations": true,
+      "allowMemberPosts": true,
+      "requirePostApproval": false,
+      "allowExternalSharing": true,
+      "notificationSettings": {
+        "newMemberNotify": true,
+        "newPostNotify": true,
+        "adminActionNotify": true
+      },
+      "postingRules": []
+    },
+    "memberManagementForm": {
+      "memberLevel": "member",
+      "permissions": {
+        "canPost": true,
+        "canComment": true,
+        "canInvite": false,
+        "canModerate": false
+      }
+    },
+    "postForm": {
+      "title": "",
+      "content": "",
+      "contentType": "text",
+      "tags": [],
+      "mediaFiles": []
+    }
+  },
+  "apiEndpoints": {
+    "circle": {
+      "getCircleList": "GET /api/v1/circles",
+      "getCircleDetail": "GET /api/v1/circles/{circleId}",
+      "createCircle": "POST /api/v1/circles",
+      "updateCircle": "PUT /api/v1/circles/{circleId}",
+      "deleteCircle": "DELETE /api/v1/circles/{circleId}",
+      "searchCircles": "GET /api/v1/circles/search",
+      "getRecommendedCircles": "GET /api/v1/circles/recommended",
+      "getCirclesByCategory": "GET /api/v1/circles/category/{category}"
+    },
+    "membership": {
+      "joinCircle": "POST /api/v1/circles/{circleId}/join",
+      "leaveCircle": "POST /api/v1/circles/{circleId}/leave",
+      "getMembers": "GET /api/v1/circles/{circleId}/members",
+      "updateMemberLevel": "PUT /api/v1/circles/{circleId}/members/{userId}",
+      "removeMember": "DELETE /api/v1/circles/{circleId}/members/{userId}",
+      "getJoinRequests": "GET /api/v1/circles/{circleId}/requests",
+      "handleJoinRequest": "PUT /api/v1/circles/{circleId}/requests/{requestId}"
+    },
+    "posts": {
+      "getCirclePosts": "GET /api/v1/circles/{circleId}/posts",
+      "createPost": "POST /api/v1/circles/{circleId}/posts",
+      "updatePost": "PUT /api/v1/circles/{circleId}/posts/{postId}",
+      "deletePost": "DELETE /api/v1/circles/{circleId}/posts/{postId}",
+      "likePost": "POST /api/v1/circles/{circleId}/posts/{postId}/like",
+      "sharePost": "POST /api/v1/circles/{circleId}/posts/{postId}/share"
+    },
+    "management": {
+      "getCircleSettings": "GET /api/v1/circles/{circleId}/settings",
+      "updateCircleSettings": "PUT /api/v1/circles/{circleId}/settings",
+      "getCircleStatistics": "GET /api/v1/circles/{circleId}/statistics",
+      "getCircleAnnouncements": "GET /api/v1/circles/{circleId}/announcements",
+      "createAnnouncement": "POST /api/v1/circles/{circleId}/announcements"
+    }
+  },
+  "validationRules": {
+    "circleName": {
+      "pattern": "^[\\u4e00-\\u9fa5a-zA-Z0-9\\s]{2,30}$",
+      "message": "圈子名称只能包含中文、字母、数字和空格，长度2-30位"
+    },
+    "circleDescription": {
+      "maxLength": 200,
+      "message": "圈子简介不能超过200个字符"
+    },
+    "postContent": {
+      "minLength": 1,
+      "maxLength": 2000,
+      "message": "帖子内容长度需在1-2000个字符之间"
+    },
+    "tagName": {
+      "pattern": "^[\\u4e00-\\u9fa5a-zA-Z0-9]{1,10}$",
+      "message": "标签只能包含中文、字母、数字，长度1-10位"
+    },
+    "limits": {
+      "maxCirclesPerUser": 50,
+      "maxPostsPerDay": 20,
+      "maxMediaFilesPerPost": 9,
+      "maxMembersPerCircle": 50000,
+      "maxTagsPerPost": 5,
+      "maxTagsPerCircle": 5
+    }
+  },
+  "categories": [
+    {
+      "key": "photography",
+      "name": "摄影",
+      "icon": "📷",
+      "description": "摄影技巧、作品分享、器材交流"
+    },
+    {
+      "key": "fitness",
+      "name": "健身",
+      "icon": "💪",
+      "description": "健身打卡、经验分享、健康生活"
+    },
+    {
+      "key": "food",
+      "name": "美食",
+      "icon": "🍔",
+      "description": "美食分享、烹饪技巧、餐厅推荐"
+    },
+    {
+      "key": "travel",
+      "name": "旅行",
+      "icon": "✈️",
+      "description": "旅行攻略、风景分享、结伴出行"
+    },
+    {
+      "key": "technology",
+      "name": "科技",
+      "icon": "💻",
+      "description": "科技资讯、技术交流、产品评测"
+    },
+    {
+      "key": "music",
+      "name": "音乐",
+      "icon": "🎵",
+      "description": "音乐分享、乐器学习、演出信息"
+    },
+    {
+      "key": "art",
+      "name": "艺术",
+      "icon": "🎨",
+      "description": "绘画、设计、手工、创意分享"
+    },
+    {
+      "key": "education",
+      "name": "教育",
+      "icon": "📚",
+      "description": "学习交流、知识分享、考试经验"
+    },
+    {
+      "key": "business",
+      "name": "商业",
+      "icon": "💼",
+      "description": "创业分享、职场经验、投资理财"
+    },
+    {
+      "key": "lifestyle",
+      "name": "生活",
+      "icon": "🏠",
+      "description": "生活窍门、家居装饰、日常分享"
+    },
+    {
+      "key": "gaming",
+      "name": "游戏",
+      "icon": "🎮",
+      "description": "游戏交流、攻略分享、战队组建"
+    },
+    {
+      "key": "sports",
+      "name": "运动",
+      "icon": "⚽",
+      "description": "运动分享、赛事讨论、约球约跑"
+    },
+    {
+      "key": "other",
+      "name": "其他",
+      "icon": "🌟",
+      "description": "其他兴趣爱好和话题"
+    }
+  ],
+  "errorCodes": {
+    "CIRCLE_NOT_FOUND": {
+      "code": 404001,
+      "message": "圈子不存在"
+    },
+    "CIRCLE_NAME_EXISTS": {
+      "code": 409001,
+      "message": "圈子名称已存在"
+    },
+    "NOT_CIRCLE_MEMBER": {
+      "code": 403001,
+      "message": "不是圈子成员"
+    },
+    "INSUFFICIENT_PERMISSIONS": {
+      "code": 403002,
+      "message": "权限不足"
+    },
+    "CIRCLE_FULL": {
+      "code": 409002,
+      "message": "圈子人数已满"
+    },
+    "ALREADY_MEMBER": {
+      "code": 409003,
+      "message": "已是圈子成员"
+    },
+    "JOIN_REQUEST_PENDING": {
+      "code": 409004,
+      "message": "加入申请审核中"
+    },
+    "MEMBER_BANNED": {
+      "code": 403003,
+      "message": "用户已被禁止加入"
+    },
+    "POST_NOT_FOUND": {
+      "code": 404002,
+      "message": "帖子不存在"
+    },
+    "CONTENT_VIOLATION": {
+      "code": 400001,
+      "message": "内容违规"
+    },
+    "RATE_LIMIT_EXCEEDED": {
+      "code": 429001,
+      "message": "操作过于频繁"
+    },
+    "CIRCLE_CREATION_FAILED": {
+      "code": 500001,
+      "message": "圈子创建失败"
+    },
+    "MEMBER_OPERATION_FAILED": {
+      "code": 500002,
+      "message": "成员操作失败"
+    }
+  },
+  "defaultValues": {
+    "circle": {
+      "avatar": "/static/default-circle-avatar.png",
+      "coverImage": "/static/default-circle-cover.jpg",
+      "category": "other",
+      "visibility": "public",
+      "joinPolicy": "open",
+      "contentModeration": "moderate",
+      "membersCount": 1,
+      "postsCount": 0,
+      "activeMembers": 1,
+      "tags": [],
+      "allowInvitations": true,
+      "allowMemberPosts": true,
+      "requirePostApproval": false,
+      "allowExternalSharing": true
+    },
+    "member": {
+      "memberLevel": "newbie",
+      "joinStatus": "joined",
+      "postsCount": 0,
+      "commentsCount": 0,
+      "likesGiven": 0,
+      "likesReceived": 0,
+      "canPost": true,
+      "canComment": true,
+      "canInvite": false,
+      "canModerate": false
+    },
+    "post": {
+      "contentType": "text",
+      "likesCount": 0,
+      "commentsCount": 0,
+      "sharesCount": 0,
+      "viewsCount": 0,
+      "status": "published",
+      "isSticky": false,
+      "isHot": false,
+      "tags": [],
+      "mediaFiles": []
+    }
+  },
+  "statusCodes": {
+    "CIRCLE_ACTIVE": "active",
+    "CIRCLE_INACTIVE": "inactive",
+    "CIRCLE_SUSPENDED": "suspended",
+    "CIRCLE_DELETED": "deleted",
+    "MEMBER_ACTIVE": "active",
+    "MEMBER_MUTED": "muted",
+    "MEMBER_BANNED": "banned",
+    "POST_PUBLISHED": "published",
+    "POST_DRAFT": "draft",
+    "POST_HIDDEN": "hidden"
+  },
+  "storageKeys": {
+    "CIRCLE_LIST": "circle_list",
+    "CIRCLE_DETAIL": "circle_detail",
+    "MEMBER_INFO": "member_info",
+    "CIRCLE_SETTINGS": "circle_settings"
+  }
+}

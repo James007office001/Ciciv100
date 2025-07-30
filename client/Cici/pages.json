@@ -1,0 +1,189 @@
+{
+	"pages": [
+		{
+			"path": "pages/auto/index",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarBackgroundColor": "#667eea",
+				"navigationBarTextStyle": "white"
+			}
+		},
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarBackgroundColor": "#FFFFFF",
+				"navigationBarTextStyle": "black"
+			}
+		},
+		{
+			"path": "pages/auth/login",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarBackgroundColor": "#FFFFFF",
+				"navigationBarTextStyle": "white"
+			}
+		},
+		{
+			"path": "pages/schedule/index",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarBackgroundColor": "#667eea",
+				"navigationBarTextStyle": "white"
+			}
+		},
+		{
+			"path": "pages/auth/register",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarBackgroundColor": "#FFFFFF",
+				"navigationBarTextStyle": "white"
+			}
+		},
+		{
+			"path": "pages/schedule/full",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarBackgroundColor": "#f5f7fa",
+				"navigationBarTextStyle": "black"
+			}
+		},
+		{
+			"path": "pages/schedule/create-event",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarBackgroundColor": "#FFFFFF",
+				"navigationBarTextStyle": "black"
+			}
+		},
+		{
+			"path": "pages/schedule/category-management",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarBackgroundColor": "#FFFFFF",
+				"navigationBarTextStyle": "black"
+			}
+		},
+		{
+			"path": "pages/discover/index", 
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/content/detail",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/content/video-detail",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarBackgroundColor": "#000000",
+				"navigationBarTextStyle": "white"
+			}
+		},
+		{
+			"path": "pages/message/index",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/profile/index",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/profile/enhanced-profile",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/family/group-list",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/family/group-detail",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/family/invite-members",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/contacts/index",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarBackgroundColor": "#FFFFFF",
+				"navigationBarTextStyle": "black"
+			}
+		},
+		{
+			"path": "pages/settings/index",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarBackgroundColor": "#FFFFFF",
+				"navigationBarTextStyle": "black"
+			}
+		}
+	],
+	"tabBar": {
+		"custom": true,
+		"color": "transparent",
+		"selectedColor": "transparent", 
+		"backgroundColor": "transparent",
+		"borderStyle": "white",
+		"list": [
+			{
+				"pagePath": "pages/schedule/index",
+				"text": ""
+			},
+			{
+				"pagePath": "pages/discover/index",
+				"text": ""
+			},
+			{
+				"pagePath": "pages/message/index",
+				"text": ""
+			},
+			{
+				"pagePath": "pages/profile/index",
+				"text": ""
+			}
+		]
+	},
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "CICI",
+		"navigationBarBackgroundColor": "transparent",
+		"backgroundColor": "transparent",
+		"app-plus": {
+			"background": "transparent"
+		}
+	},
+	"condition": {
+		"current": 0,
+		"list": [
+			{
+				"name": "活动页面",
+				"path": "pages/schedule/index",
+				"query": ""
+			},
+			{
+				"name": "发现页面", 
+				"path": "pages/discover/index",
+				"query": ""
+			}
+		]
+	}
+}

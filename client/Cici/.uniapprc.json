@@ -1,0 +1,16 @@
+{
+  "router": {
+    "mode": "history",
+    "base": "/"
+  },
+  "optimization": {
+    "treeShaking": {
+      "enable": true
+    }
+  },
+  "runmode": "liberate",
+  "server": {
+    "port": 8080,
+    "disableHostCheck": true
+  }
+}

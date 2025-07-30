@@ -1,0 +1,7 @@
+{
+  "create": {
+    "page": "pages",
+    "component": "components"
+  },
+  "type": "uni-app"
+}
