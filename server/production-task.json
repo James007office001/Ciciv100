@@ -1,0 +1,53 @@
+﻿{
+    "memory":  "1024",
+    "executionRoleArn":  "arn:aws:iam::244977608002:role/ecsTaskExecutionRole",
+    "family":  "c2-production",
+    "networkMode":  "awsvpc",
+    "requiresCompatibilities":  [
+                                    "FARGATE"
+                                ],
+    "containerDefinitions":  [
+                                 {
+                                     "name":  "c2-backend",
+                                     "logConfiguration":  {
+                                                              "logDriver":  "awslogs",
+                                                              "options":  {
+                                                                              "awslogs-region":  "us-east-1",
+                                                                              "awslogs-stream-prefix":  "c2-backend",
+                                                                              "awslogs-create-group":  "true",
+                                                                              "awslogs-group":  "/ecs/c2-production"
+                                                                          }
+                                                          },
+                                     "environment":  [
+                                                         {
+                                                             "value":  "production",
+                                                             "name":  "NODE_ENV"
+                                                         },
+                                                         {
+                                                             "value":  "3000",
+                                                             "name":  "PORT"
+                                                         }
+                                                     ],
+                                     "essential":  true,
+                                     "image":  "244977608002.dkr.ecr.us-east-1.amazonaws.com/c2-backend:latest",
+                                     "portMappings":  [
+                                                          {
+                                                              "containerPort":  3000,
+                                                              "protocol":  "tcp",
+                                                              "hostPort":  3000
+                                                          }
+                                                      ],
+                                     "healthCheck":  {
+                                                         "retries":  3,
+                                                         "command":  [
+                                                                         "CMD-SHELL",
+                                                                         "curl -f http://localhost:3000/health || exit 1"
+                                                                     ],
+                                                         "timeout":  5,
+                                                         "interval":  30,
+                                                         "startPeriod":  120
+                                                     }
+                                 }
+                             ],
+    "cpu":  "512"
+}

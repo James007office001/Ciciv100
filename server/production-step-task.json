@@ -1,0 +1,41 @@
+{
+    "family": "c2-production-step",
+    "networkMode": "awsvpc",
+    "requiresCompatibilities": ["FARGATE"],
+    "cpu": "1024",
+    "memory": "2048",
+    "executionRoleArn": "arn:aws:iam::244977608002:role/ecsTaskExecutionRole",
+    "containerDefinitions": [
+        {
+            "name": "c2-backend",
+            "image": "244977608002.dkr.ecr.us-east-1.amazonaws.com/c2-backend:latest",
+            "essential": true,
+            "portMappings": [
+                {
+                    "containerPort": 3000,
+                    "protocol": "tcp"
+                }
+            ],
+            "environment": [
+                {"name": "NODE_ENV", "value": "production"},
+                {"name": "PORT", "value": "3000"}
+            ],
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "/ecs/c2-production-step",
+                    "awslogs-region": "us-east-1",
+                    "awslogs-stream-prefix": "c2-backend",
+                    "awslogs-create-group": "true"
+                }
+            },
+            "healthCheck": {
+                "command": ["CMD-SHELL", "curl -f http://localhost:3000/health || exit 1"],
+                "interval": 30,
+                "timeout": 10,
+                "retries": 3,
+                "startPeriod": 60
+            }
+        }
+    ]
+}

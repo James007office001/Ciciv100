@@ -1,0 +1,23 @@
+﻿{
+    "memory":  "512",
+    "executionRoleArn":  "arn:aws:iam::244977608002:role/ecsTaskExecutionRole",
+    "family":  "c2-test-minimal",
+    "networkMode":  "awsvpc",
+    "requiresCompatibilities":  [
+                                    "FARGATE"
+                                ],
+    "containerDefinitions":  [
+                                 {
+                                     "portMappings":  [
+                                                          {
+                                                              "protocol":  "tcp",
+                                                              "containerPort":  80
+                                                          }
+                                                      ],
+                                     "name":  "test-container",
+                                     "essential":  true,
+                                     "image":  "nginx:latest"
+                                 }
+                             ],
+    "cpu":  "256"
+}
