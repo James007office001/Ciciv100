@@ -1,1 +1,4 @@
 node_modules/
+aws-deployment-status.ps1
+test-aws-creds.ps1
+test-aws-creds.ps1
